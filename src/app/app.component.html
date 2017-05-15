@@ -1,6 +1,20 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" class="mat-elevation-z6">
   <span>{{title}}</span>
 </md-toolbar>
-<div class="body">
-  <!--<router-outlet></router-outlet>-->
-</div>
+<md-sidenav-container>
+  <md-sidenav mode="side" opened="true" class="mat-elevation-z6">
+    <md-nav-list>
+      <a md-list-item routerLink="/add-new-employee"> Add New Employee </a>
+      <a md-list-item href="#"> Add New Employee </a>
+      <a md-list-item href="#"> Add New Employee </a>
+      <a md-list-item href="#"> Add New Employee </a>
+      <a md-list-item href="#"> Add New Employee to me ok</a>
+    </md-nav-list>
+  </md-sidenav>
+  <div class="my-content">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+</md-sidenav-container>
+

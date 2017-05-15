@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 const appRoutes: Routes = [
-  { path: 'add-new-employee', component: NewEmployeeComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 @NgModule({
   imports: [
@@ -13,4 +13,4 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class EmployeesRoutingModule { }
+export class AppRoutingModule { }
