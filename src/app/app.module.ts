@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { EmployeesModule } from './modules/employees/employees.module';
+import { BranchesModule } from './modules/branches/branches.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -22,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     EmployeesModule,
+    BranchesModule,
     AppRoutingModule
   ],
   providers: [],

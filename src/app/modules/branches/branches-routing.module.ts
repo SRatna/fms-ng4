@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { NewEmployeeComponent } from './components/branch/';
 
+const appRoutes: Routes = [
+  { path: 'add-new-employee', component: NewEmployeeComponent },
+];
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forRoot(appRoutes)
   ],
-  declarations: []
+  exports: [
+    RouterModule
+  ]
 })
-export class BranchesModule { }
+export class EmployeesRoutingModule { }
