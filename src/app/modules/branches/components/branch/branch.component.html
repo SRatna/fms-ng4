@@ -1,3 +1,16 @@
-<p>
-  branch works!
-</p>
+<md-toolbar color="primary">
+  Branches
+</md-toolbar>
+<md-grid-list cols="2">
+  <md-grid-tile>
+    <form>
+      <md-input-container style="width:100%;">
+        <input mdInput placeholder="Branch name" required  name="name" [(ngModel)]="branch.name">
+        <button md-raised-button color="accent" type="submit" (click)="saveBranch()" >Save</button>
+      </md-input-container>
+    </form>
+  </md-grid-tile>
+  <md-grid-tile>
+
+  </md-grid-tile>
+</md-grid-list>

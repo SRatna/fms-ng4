@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewEmployeeComponent } from './components/branch/';
+import { BranchComponent } from './components/branch/branch.component';
 
 const appRoutes: Routes = [
-  { path: 'add-new-employee', component: NewEmployeeComponent },
+  { path: 'branches', component: BranchComponent },
 ];
 @NgModule({
   imports: [
@@ -13,4 +13,4 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class EmployeesRoutingModule { }
+export class BrachesRoutingModule { }

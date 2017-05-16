@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Branch } from '../../classes/branch';
+import { BranchesService } from '../../services/branches.service';
 
 @Component({
   selector: 'app-branch',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BranchComponent implements OnInit {
 
-  constructor() { }
+  branch: Branch;
+
+  constructor(private branchService: BranchesService) { }
+
+  save(): void {
+    this.branchService.create(this.branch).then(() => null);
+  }
 
   ngOnInit() {
   }
