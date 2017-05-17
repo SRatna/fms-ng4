@@ -13,11 +13,11 @@
 <md-grid-list cols="2">
   <md-grid-tile>
     <div style="width:70%; ">
-      <form>
+      <form #myForm="ngForm">
         <md-input-container style="width:100%;">
-          <input mdInput placeholder="Branch name" required  name="name" [(ngModel)]="branch.name">
+          <input mdInput placeholder="Branch name" name="name" [(ngModel)]="branch.name">
         </md-input-container>
-        <button md-raised-button color="primary" type="submit" (click)="save()" >Save</button>
+        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset()" >Save</button>
       </form>
 
     </div>

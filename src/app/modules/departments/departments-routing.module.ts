@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 import { DepartmentComponent } from './components/department/department.component';
 
+const appRoutes: Routes = [
+  { path: 'departments', component: DepartmentComponent },
+];
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forRoot(appRoutes)
   ],
-  declarations: [DepartmentComponent]
+  exports: [
+    RouterModule
+  ]
 })
-export class DepartmentsModule { }
+export class DepartmentsRoutingModule { }

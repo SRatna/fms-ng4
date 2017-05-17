@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { EmployeesModule } from './modules/employees/employees.module';
 import { BranchesModule } from './modules/branches/branches.module';
+import { DepartmentsModule } from './modules/departments/departments.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     EmployeesModule,
     BranchesModule,
+    DepartmentsModule,
     AppRoutingModule
   ],
   providers: [],

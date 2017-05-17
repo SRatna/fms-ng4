@@ -17,6 +17,7 @@ export class BranchComponent implements OnInit {
 
   save(): void {
     this.branchService.create(this.branch).subscribe(branch => this.branches.push(branch), error => console.log(error));
+    // this.branch = {id: 0, name: ' '};
   }
 
   deleteBranch(branch: Branch): void {

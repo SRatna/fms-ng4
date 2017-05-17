@@ -1,3 +1,47 @@
-<p>
-  department works!
-</p>
+<md-toolbar color="primary">
+  Departments
+</md-toolbar>
+<style>
+  div{
+    position: absolute;
+    left:0px;
+    padding:16px;
+    top: 0px;
+  }
+</style>
+
+<md-grid-list cols="2">
+  <md-grid-tile>
+    <div style="width:70%; ">
+      <form #myForm="ngForm">
+        <md-input-container style="width:100%;">
+          <input mdInput placeholder="Department name" name="name" [(ngModel)]="department.name">
+        </md-input-container>
+        <md-select style="width: 100%;"  placeholder="Select Branch" [(ngModel)]="department.branch_id" name="branch_id">
+          <md-option *ngFor="let branch of branches" [value]="branch.id">
+            {{branch.name}}
+          </md-option>
+        </md-select>
+        <br>
+        <br>
+        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset();" >Save</button>
+      </form>
+
+    </div>
+  </md-grid-tile>
+  <md-grid-tile>
+    <div style="width: 70%; height:80%;">
+      <md-card style="width: 100%; height: 100%; overflow-y:auto;">
+        <h2>Departments List</h2>
+        <hr>
+        <md-list>
+          <md-list-item *ngFor="let department of departments">
+            <!--<md-icon md-list-icon>delete</md-icon>-->
+            <h3 md-line> {{department.name}} under {{department.branch}}</h3>
+            <button md-raised-button color="primary" (click)="deleteDepartment(department)" >Delete</button>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </md-grid-tile>
+</md-grid-list>

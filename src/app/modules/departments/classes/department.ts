@@ -1,5 +1,6 @@
 export class Department {
   id: number;
   name: string;
-  branch: number;
+  branch_id: number;
+  branch?: string;
 }
