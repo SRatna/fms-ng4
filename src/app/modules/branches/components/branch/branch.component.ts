@@ -21,7 +21,8 @@ export class BranchComponent implements OnInit {
 
   deleteBranch(branch: Branch): void {
     if (confirm('Do you really want to delete?')) {
-      this.branches = this.branches.filter(b => b !== branch);
+      this.branchService.deleteBranch(branch)
+        .subscribe(deletedBranch => this.branches = this.branches.filter(b => b !== deletedBranch), err => console.log(err));
     }
 
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import {Branch} from '../classes/branch';
+import { Branch } from '../classes/branch';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -17,6 +17,13 @@ export class BranchesService {
     return this.http
       .post(this.branchesUrl, JSON.stringify(branch), {headers: this.headers})
       .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  deleteBranch(branch: Branch): Observable<Branch> {
+    return this.http
+      .delete(`${this.branchesUrl}/${branch.id}`)
+      .map((res: Response) => branch)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
