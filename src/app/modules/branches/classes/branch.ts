@@ -1,3 +1,4 @@
 export class Branch {
-  branch: string;
+  id: number;
+  name: string;
 }

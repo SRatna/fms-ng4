@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Headers, Http, Response } from '@angular/http';
 import {Branch} from '../classes/branch';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class BranchesService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private brachesUrl = 'http://localhost/advanced/api/web/v1/branches';
+  private branchesUrl = 'http://localhost/advanced/api/web/v1/branches';
 
   constructor(private http: Http) { }
 
-  create(branch: Branch): Promise<Branch> {
+  create(branch: Branch): Observable<Branch> {
     return this.http
-      .post(this.brachesUrl, JSON.stringify(branch), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json().data as Branch)
-      .catch(this.handleError);
+      .post(this.branchesUrl, JSON.stringify(branch), {headers: this.headers})
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  getBranches(): Observable<Branch[]> {
+    return this.http.get(this.branchesUrl)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-
 }
