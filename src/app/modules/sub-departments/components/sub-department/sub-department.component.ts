@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../../../../services/common.service';
+import * as _ from 'underscore';
+import { SubDepartment } from '../../classes/sub-department';
+import { Department } from '../../../departments/classes/department';
 
 @Component({
   selector: 'app-sub-department',
@@ -7,9 +11,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubDepartmentComponent implements OnInit {
 
-  constructor() { }
+  subDepartment = new SubDepartment();
+  subDepartments: SubDepartment[] = [];
+  departments: Department[];
+  private subDepartmentsUrl = 'http://localhost/advanced/api/web/v1/subdepartments';
+  private departmentsUrl = 'http://localhost/advanced/api/web/v1/departments';
+
+
+  constructor(private commonService: CommonService) { }
+
+  save(): void {
+    this.commonService.create(this.subDepartment, this.subDepartmentsUrl).subscribe(subdepartment => {
+      const itsDepartment = _.findWhere(this.departments, {id: subdepartment.department_id});
+      subdepartment.department = itsDepartment.name;
+      this.subDepartments.push(subdepartment);
+    }, error => console.log(error));
+  }
+
+  deleteSubDepartment(subdepartment: SubDepartment): void {
+    if (confirm('Do you really want to delete?')) {
+      this.commonService.remove(subdepartment, this.subDepartmentsUrl)
+        .subscribe(deletedSubDepartment =>
+          this.subDepartments = this.subDepartments.filter(sd => sd !== deletedSubDepartment), err => console.log(err));
+    }
+  }
+
+  getDepartmentsAndSubDepartments(): void {
+    this.commonService
+      .getObjects(this.departmentsUrl)
+      .subscribe(departments => {
+        this.departments = departments;
+        this.commonService
+          .getObjects(this.subDepartmentsUrl)
+          .subscribe(subdepartments => {
+            for (const mySubDepartment of subdepartments){
+              const itsDepartment = _.findWhere(this.departments, {id: mySubDepartment.department_id});
+              mySubDepartment.department = itsDepartment.name;
+              // console.log(myDepartment);
+              this.subDepartments.push(mySubDepartment);
+            }
+          } , err => console.log(err));
+      }, err => console.log(err));
+  }
 
   ngOnInit() {
+    this.getDepartmentsAndSubDepartments();
   }
 
 }

@@ -28,6 +28,7 @@ import { CommonService } from './services/common.service';
     EmployeesModule,
     BranchesModule,
     DepartmentsModule,
+    SubDepartmentsModule,
     AppRoutingModule
   ],
   providers: [CommonService],
