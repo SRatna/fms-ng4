@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { StatusesComponent } from './components/statuses/statuses.component';
 
+const appRoutes: Routes = [
+  { path: 'statuses', component: StatusesComponent },
+];
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forRoot(appRoutes)
   ],
-  declarations: []
+  exports: [
+    RouterModule
+  ]
 })
-export class StatusesModule { }
+export class StatusesRoutingModule { }

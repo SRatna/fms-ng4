@@ -12,6 +12,7 @@ import { DesignationsModule } from './modules/designations/designations.module';
 import { GradesModule } from './modules/grades/grades.module';
 import { ModesModule } from './modules/modes/modes.module';
 import { TypesModule } from './modules/types/types.module';
+import { StatusesModule } from './modules/statuses/statuses.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -41,6 +42,7 @@ import { CommonService } from './services/common.service';
     GradesModule,
     ModesModule,
     TypesModule,
+    StatusesModule,
     AppRoutingModule
   ],
   providers: [CommonService],
