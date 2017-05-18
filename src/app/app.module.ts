@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { EmployeesModule } from './modules/employees/employees.module';
 import { BranchesModule } from './modules/branches/branches.module';
 import { DepartmentsModule } from './modules/departments/departments.module';
+import { SubDepartmentsModule } from './modules/sub-departments/sub-departments.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
