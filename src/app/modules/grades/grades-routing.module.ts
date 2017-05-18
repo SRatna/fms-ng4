@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { GradesComponent } from './components/grades/grades.component';
 
+const appRoutes: Routes = [
+  { path: 'grades', component: GradesComponent },
+];
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forRoot(appRoutes)
   ],
-  declarations: []
+  exports: [
+    RouterModule
+  ]
 })
-export class GradesModule { }
+export class GradesRoutingModule { }

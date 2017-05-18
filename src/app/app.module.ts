@@ -9,6 +9,7 @@ import { SubDepartmentsModule } from './modules/sub-departments/sub-departments.
 import { CategoriesModule } from './modules/categories/categories.module';
 import { CountriesModule } from './modules/countries/countries.module';
 import { DesignationsModule } from './modules/designations/designations.module';
+import { GradesModule } from './modules/grades/grades.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -35,6 +36,7 @@ import { CommonService } from './services/common.service';
     CategoriesModule,
     CountriesModule,
     DesignationsModule,
+    GradesModule,
     AppRoutingModule
   ],
   providers: [CommonService],
