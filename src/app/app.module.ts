@@ -6,6 +6,7 @@ import { EmployeesModule } from './modules/employees/employees.module';
 import { BranchesModule } from './modules/branches/branches.module';
 import { DepartmentsModule } from './modules/departments/departments.module';
 import { SubDepartmentsModule } from './modules/sub-departments/sub-departments.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
@@ -29,6 +30,7 @@ import { CommonService } from './services/common.service';
     BranchesModule,
     DepartmentsModule,
     SubDepartmentsModule,
+    CategoriesModule,
     AppRoutingModule
   ],
   providers: [CommonService],

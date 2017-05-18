@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Branch } from '../../classes/branch';
-// import { BranchesService } from '../../services/branches.service';
 import { CommonService } from '../../../../services/common.service';
 
 @Component({
@@ -10,7 +9,6 @@ import { CommonService } from '../../../../services/common.service';
 })
 export class BranchComponent implements OnInit {
 
-  // branch: Branch;
   branch = new Branch();
   branches: Branch[];
   private branchesUrl = 'http://localhost/advanced/api/web/v1/branches';

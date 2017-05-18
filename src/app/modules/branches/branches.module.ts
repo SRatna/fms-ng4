@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { CustomMaterialModule } from '../../custom-material.module';
 import { BrachesRoutingModule } from './branches-routing.module';
-// import { BranchesService } from './services/branches.service';
 import { BranchComponent } from './components/branch/branch.component';
 
 @NgModule({
