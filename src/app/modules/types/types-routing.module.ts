@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { TypesComponent } from './components/types/types.component';
 
+const appRoutes: Routes = [
+  { path: 'types', component: TypesComponent },
+];
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forRoot(appRoutes)
   ],
-  declarations: []
+  exports: [
+    RouterModule
+  ]
 })
-export class TypesModule { }
+export class TypesRoutingModule { }
