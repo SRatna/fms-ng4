@@ -1,9 +1,10 @@
 import { Department } from '../../classes/department';
 import { DepartmentsService } from '../../services/departments.service';
 import { Component, OnInit } from '@angular/core';
-import { BranchesService } from '../../../branches/services/branches.service';
 import { Branch } from '../../../branches/classes/branch';
+import { CommonService } from '../../../../services/common.service';
 import * as _ from 'underscore';
+
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -14,11 +15,14 @@ export class DepartmentComponent implements OnInit {
   department = new Department();
   departments: Department[] = [];
   branches: Branch[];
+  private departmentsUrl = 'http://localhost/advanced/api/web/v1/departments';
+  private branchesUrl = 'http://localhost/advanced/api/web/v1/branches';
 
-  constructor(private departmentsService: DepartmentsService, private branchesService: BranchesService) { }
+
+  constructor(private commonService: CommonService) { }
 
   save(): void {
-    this.departmentsService.create(this.department).subscribe(department => {
+    this.commonService.create(this.department, this.departmentsUrl).subscribe(department => {
       const newBranch = _.findWhere(this.branches, {id: department.branch_id});
       department.branch = newBranch.name;
       this.departments.push(department);
@@ -27,19 +31,19 @@ export class DepartmentComponent implements OnInit {
 
   deleteDepartment(department: Department): void {
     if (confirm('Do you really want to delete?')) {
-      this.departmentsService.deleteDepartment(department)
+      this.commonService.remove(department, this.departmentsUrl)
         .subscribe(deletedDepartment => this.departments = this.departments.filter(d => d !== deletedDepartment), err => console.log(err));
     }
 
   }
 
   getBranchesAndDepartments(): void {
-    this.branchesService
-      .getBranches()
+    this.commonService
+      .getObjects(this.branchesUrl)
       .subscribe(branches => {
         this.branches = branches;
-        this.departmentsService
-          .getDepartments()
+        this.commonService
+          .getObjects(this.departmentsUrl)
           .subscribe(departments => {
             for (const myDepartment of departments){
               const newBranch = _.findWhere(branches, {id: myDepartment.branch_id});
