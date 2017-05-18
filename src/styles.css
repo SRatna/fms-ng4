@@ -5,6 +5,12 @@ html, body, md-sidenav-container,.my-content{
   height: 100%;
 }
 
+/*html, body,.my-content{*/
+  /*margin: 0;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+/*}*/
+
 body{
   overflow-y: hidden;
 }
