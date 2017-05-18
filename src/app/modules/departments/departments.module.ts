@@ -7,7 +7,7 @@ import 'hammerjs';
 import { CustomMaterialModule } from '../../custom-material.module';
 import { DepartmentComponent } from './components/department/department.component';
 import { DepartmentsRoutingModule } from './departments-routing.module';
-import {DepartmentsService} from './services/departments.service';
+// import {DepartmentsService} from './services/departments.service';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import {DepartmentsService} from './services/departments.service';
     CustomMaterialModule,
     DepartmentsRoutingModule
   ],
-  providers: [DepartmentsService],
+  providers: [],
   declarations: [DepartmentComponent]
 })
 export class DepartmentsModule { }

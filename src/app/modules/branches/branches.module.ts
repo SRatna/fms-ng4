@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { CustomMaterialModule } from '../../custom-material.module';
 import { BrachesRoutingModule } from './branches-routing.module';
-import { BranchesService } from './services/branches.service';
+// import { BranchesService } from './services/branches.service';
 import { BranchComponent } from './components/branch/branch.component';
 
 @NgModule({
@@ -19,6 +19,6 @@ import { BranchComponent } from './components/branch/branch.component';
     BrowserAnimationsModule,
     CustomMaterialModule,
   ],
-  providers: [BranchesService]
+  providers: []
 })
 export class BranchesModule { }
