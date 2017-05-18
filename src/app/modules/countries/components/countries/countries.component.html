@@ -1,3 +1,43 @@
-<p>
-  countries works!
-</p>
+<md-toolbar color="primary">
+  Branches
+</md-toolbar>
+<style>
+  div{
+    position: absolute;
+    left:0px;
+    padding:16px;
+    top: 0px;
+  }
+</style>
+
+<md-grid-list cols="2">
+  <md-grid-tile>
+    <div style="width:70%; ">
+      <form #myForm="ngForm">
+        <md-input-container style="width:100%;">
+          <input mdInput placeholder="Country name" name="name" [(ngModel)]="country.name">
+        </md-input-container>
+        <md-input-container style="width:100%;">
+          <input mdInput placeholder="Country continent" name="continent" [(ngModel)]="country.contenent">
+        </md-input-container>
+        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset()" >Save</button>
+      </form>
+
+    </div>
+  </md-grid-tile>
+  <md-grid-tile>
+    <div style="width: 70%; height:80%;">
+      <md-card style="width: 100%; height: 100%; overflow-y:auto;">
+        <h2>Countries List</h2>
+        <hr>
+        <md-list>
+          <md-list-item *ngFor="let country of countries">
+            <!--<md-icon md-list-icon>delete</md-icon>-->
+            <h3 md-line> {{country.name}} | {{country.contenent}}</h3>
+            <button md-raised-button color="primary" (click)="deleteCountry(country)" >Delete</button>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </md-grid-tile>
+</md-grid-list>
