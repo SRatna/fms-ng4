@@ -11,6 +11,7 @@ import 'hammerjs';
 import { CustomMaterialModule } from './custom-material.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonService } from './services/common.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
     DepartmentsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
