@@ -5,7 +5,6 @@ import {
   MdListModule, MdGridListModule, MdCardModule,
   MdInputModule, MdSelectModule, MdIconModule
 } from '@angular/material';
-import { MdDataTableModule } from 'ng2-md-datatable';
 
 @NgModule({
   imports: [
@@ -19,7 +18,6 @@ import { MdDataTableModule } from 'ng2-md-datatable';
     MdSelectModule,
     MdIconModule,
     MdCardModule,
-    MdDataTableModule
   ],
   exports: [
     MdButtonModule,
@@ -32,7 +30,6 @@ import { MdDataTableModule } from 'ng2-md-datatable';
     MdSelectModule,
     MdIconModule,
     MdCardModule,
-    MdDataTableModule
   ],
 })
 export class CustomMaterialModule { }
