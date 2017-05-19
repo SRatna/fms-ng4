@@ -67,14 +67,14 @@
           </md-select>
         </td>
         <td>
-          <md-select placeholder="Grade" class="full-width" [(ngModel)]="employee.grade_id" name="employee.grade_id" >
+          <md-select placeholder="Grade" class="full-width" [(ngModel)]="employee.grade_id" name="grade_id" >
             <md-option *ngFor="let item of grades" [value]="item.id">
               {{item.name}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <md-select placeholder="Mode" class="full-width" [(ngModel)]="employee.mode_id" name="employee.mode_id">
+          <md-select placeholder="Mode" class="full-width" [(ngModel)]="employee.mode_id" name="mode_id">
             <md-option *ngFor="let item of modes" [value]="item.id">
               {{item.name}}
             </md-option>
@@ -83,14 +83,14 @@
       </tr>
       <tr>
         <td>
-          <md-select placeholder="Status" class="full-width" [(ngModel)]="employee.status_id" name="employee.status_id">
+          <md-select placeholder="Status" class="full-width" [(ngModel)]="employee.status_id" name="status_id">
             <md-option *ngFor="let item of statuses" [value]="item.id">
               {{item.name}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <md-select placeholder="Type" class="full-width" [(ngModel)]="employee.type_id" name="employee.type_id">
+          <md-select placeholder="Type" class="full-width" [(ngModel)]="employee.type_id" name="type_id">
             <md-option *ngFor="let item of types" [value]="item.id">
               {{item.name}}
             </md-option>
@@ -100,12 +100,12 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Joined date in B.S (yyyy/mm/dd)" [(ngModel)]="employee.joined_n_date" name="employee.joined_n_date">
+            <input mdInput placeholder="Joined date in B.S (yyyy/mm/dd)" [(ngModel)]="employee.joined_n_date" name="joined_n_date">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Joined date in A.D (yyyy/mm/dd)" [(ngModel)]="employee.joined_e_date" name="employee.joined_e_date">
+            <input mdInput placeholder="Joined date in A.D (yyyy/mm/dd)" [(ngModel)]="employee.joined_e_date" name="joined_e_date">
           </md-input-container>
         </td>
       </tr>
@@ -135,16 +135,16 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Date of Birth in B.S (yyyy/mm/dd)" [(ngModel)]="employee.dob_n" name="employee.dob_n">
+            <input mdInput placeholder="Date of Birth in B.S (yyyy/mm/dd)" [(ngModel)]="employee.dob_n" name="dob_n">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Date of Birth in A.D (yyyy/mm/dd)" [(ngModel)]="employee.dob_e" name="employee.dob_e">
+            <input mdInput placeholder="Date of Birth in A.D (yyyy/mm/dd)" [(ngModel)]="employee.dob_e" name="dob_e">
           </md-input-container>
         </td>
         <td>
-          <md-select placeholder="Gender" class="full-width" [(ngModel)]="employee.gender" name="employee.gender">
+          <md-select placeholder="Gender" class="full-width" [(ngModel)]="employee.gender" name="gender">
             <md-option value="male">Male</md-option>
             <md-option value="female">Female</md-option>
             <md-option value="other">Other</md-option>
@@ -154,17 +154,17 @@
       <tr>
         <td>
           <md-input-container class="full-width" >
-            <input mdInput placeholder="Phone" [(ngModel)]="employee.mobile_number" name="employee.mobile_number">
+            <input mdInput placeholder="Phone" [(ngModel)]="employee.mobile_number" name="mobile_number">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width" >
-            <input mdInput placeholder="Email" [(ngModel)]="employee.email" name="employee.email">
+            <input mdInput placeholder="Email" [(ngModel)]="employee.email" name="email">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Citizenship No" [(ngModel)]="employee.citizenship_no" name="employee.citizenship_no">
+            <input mdInput placeholder="Citizenship No" [(ngModel)]="employee.citizenship_no" name="citizenship_no">
           </md-input-container>
         </td>
       </tr>
@@ -177,29 +177,29 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Country" [(ngModel)]="employee.p_country" name="employee.p_country">
+            <input mdInput placeholder="Country" [(ngModel)]="employee.p_country" name="p_country">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Zone" [(ngModel)]="employee.p_zone" name="employee.p_zone">
+            <input mdInput placeholder="Zone" [(ngModel)]="employee.p_zone" name="p_zone">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="District" [(ngModel)]="employee.p_district" name="employee.p_district">
+            <input mdInput placeholder="District" [(ngModel)]="employee.p_district" name="p_district">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Address" [(ngModel)]="employee.p_address" name="employee.p_address">
+            <input mdInput placeholder="Address" [(ngModel)]="employee.p_address" name="p_address">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Street" [(ngModel)]="employee.p_street" name="employee.p_street">
+            <input mdInput placeholder="Street" [(ngModel)]="employee.p_street" name="p_street">
           </md-input-container>
         </td>
       </tr>
@@ -212,29 +212,29 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Country" [(ngModel)]="employee.t_country" name="employee.t_country">
+            <input mdInput placeholder="Country" [(ngModel)]="employee.t_country" name="t_country">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Zone" [(ngModel)]="employee.t_zone" name="employee.t_zone">
+            <input mdInput placeholder="Zone" [(ngModel)]="employee.t_zone" name="t_zone">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="District" [(ngModel)]="employee.t_district" name="employee.t_district">
+            <input mdInput placeholder="District" [(ngModel)]="employee.t_district" name="t_district">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Address" [(ngModel)]="employee.t_address" name="employee.t_address">
+            <input mdInput placeholder="Address" [(ngModel)]="employee.t_address" name="t_address">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Street" [(ngModel)]="employee.t_street" name="employee.t_street">
+            <input mdInput placeholder="Street" [(ngModel)]="employee.t_street" name="t_street">
           </md-input-container>
         </td>
       </tr>

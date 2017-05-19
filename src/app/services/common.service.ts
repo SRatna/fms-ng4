@@ -12,6 +12,7 @@ export class CommonService {
   constructor(private http: Http) { }
 
   create(obj: any, url: string): Observable<any> {
+    console.log(obj);
     return this.http
       .post(url, JSON.stringify(obj), {headers: this.headers})
       .map((res: Response) => res.json())
