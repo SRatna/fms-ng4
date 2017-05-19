@@ -8,13 +8,16 @@
   .less-width{
     width:100%;
   }
+  md-select{
+    margin: 16px 0px;
+  }
 </style>
-<div style="padding: 16px;">
+<div style="padding: 16px; overflow-y: auto; height: calc(100vh - 155px);">
   <table class="less-width" cellspacing="0">
     <tr>
       <td>
         <md-input-container class="full-width">
-        <input mdInput placeholder="First name" required>
+        <input mdInput placeholder="First name">
         </md-input-container>
       </td>
       <td>
@@ -24,7 +27,7 @@
       </td>
       <td>
         <md-input-container class="full-width">
-          <input mdInput placeholder="Last name" required>
+          <input mdInput placeholder="Last name">
         </md-input-container>
       </td>
     </tr>
@@ -52,6 +55,174 @@
           <md-option value="lorem">Lorem Ipsum</md-option>
           <md-option value="lorem">Lorem Ipsum</md-option>
         </md-select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-select placeholder="Designation" class="full-width">
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+        </md-select>
+      </td>
+      <td>
+        <md-select placeholder="Grade" class="full-width">
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+        </md-select>
+      </td>
+      <td>
+        <md-select placeholder="Mode" class="full-width">
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+        </md-select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-select placeholder="Status" class="full-width">
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+        </md-select>
+      </td>
+      <td>
+        <md-select placeholder="Type" class="full-width">
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+          <md-option value="lorem">Lorem Ipsum</md-option>
+        </md-select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Joined date in B.S">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Joined date in A.D">
+        </md-input-container>
+      </td>
+    </tr>
+    <h3>Personal Details</h3>
+    <tr>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Date of Birth in B.S">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Date of Birth in A.D">
+        </md-input-container>
+      </td>
+      <td>
+        <md-select placeholder="Gender" class="full-width">
+          <md-option value="male">Male</md-option>
+          <md-option value="female">Female</md-option>
+          <md-option value="other">Other</md-option>
+        </md-select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Phone">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Email">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Citizenship No">
+        </md-input-container>
+      </td>
+    </tr>
+    <h3>Permanent Address</h3>
+    <tr>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Country">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Zone">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="District">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Address">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Street">
+        </md-input-container>
+      </td>
+    </tr>
+    <h3>Temporary Address</h3>
+    <tr>
+      <td><hr></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Country">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Zone">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="District">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Address">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Street">
+        </md-input-container>
       </td>
     </tr>
   </table>
