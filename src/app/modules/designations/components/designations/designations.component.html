@@ -15,9 +15,10 @@
     <div style="width:70%; ">
       <form #myForm="ngForm">
         <md-input-container style="width:100%;">
-          <input mdInput placeholder="Category name" name="name" [(ngModel)]="designation.name">
+          <input mdInput placeholder="Designation name" name="name" [(ngModel)]="designation.name">
         </md-input-container>
-        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset()" >Save</button>
+        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
+        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
       </form>
 
     </div>

@@ -17,6 +17,7 @@
         <md-input-container style="width:100%;">
           <input mdInput placeholder="Sub Department name" name="name" [(ngModel)]="subDepartment.name">
         </md-input-container>
+        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
         <md-select style="width: 100%;"  placeholder="Select Department" [(ngModel)]="subDepartment.department_id" name="department_id">
           <md-option *ngFor="let department of departments" [value]="department.id">
             {{department.name}}
@@ -24,7 +25,7 @@
         </md-select>
         <br>
         <br>
-        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset();" >Save</button>
+        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
       </form>
 
     </div>

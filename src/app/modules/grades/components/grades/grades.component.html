@@ -17,7 +17,8 @@
         <md-input-container style="width:100%;">
           <input mdInput placeholder="Grade name" name="name" [(ngModel)]="grade.name">
         </md-input-container>
-        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset()" >Save</button>
+        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
+        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
       </form>
 
     </div>

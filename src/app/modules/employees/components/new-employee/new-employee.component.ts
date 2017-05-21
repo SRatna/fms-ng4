@@ -11,6 +11,7 @@ import { Designation } from '../../../designations/classes/designation';
 import { RegisteredUser } from '../../../registered-users/classes/registered-user';
 import { CommonService } from '../../../../services/common.service';
 import * as _ from 'underscore';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-new-employee',
@@ -45,7 +46,7 @@ export class NewEmployeeComponent implements OnInit {
 
   constructor(private commonService: CommonService) { }
 
-  save(): void {
+  save(myForm: FormGroup): void {
     this.commonService.create(this.employee, this.saveEmployeesUrl)
       .subscribe(obj => {
         // const foundBranch = _.findWhere(this.branches, {id: obj.branch_id});
@@ -67,7 +68,8 @@ export class NewEmployeeComponent implements OnInit {
         // obj.status = foundStatus.name;
         // obj.reg_username = foundRegisteredUser.name;
         // this.employees.push(obj);
-        console.log(obj);
+        // console.log(obj);
+        myForm.reset();
       }, error => console.log(error));
   }
 

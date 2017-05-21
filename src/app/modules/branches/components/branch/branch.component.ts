@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Branch } from '../../classes/branch';
 import { CommonService } from '../../../../services/common.service';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-branch',
@@ -9,6 +10,8 @@ import { CommonService } from '../../../../services/common.service';
 })
 export class BranchComponent implements OnInit {
 
+  duplicity: boolean;
+  duplicityErrorMsg: string;
   branch = new Branch();
   branches: Branch[];
   private branchesUrl = 'http://localhost/advanced/api/web/v1/branches';
@@ -16,9 +19,20 @@ export class BranchComponent implements OnInit {
 
   constructor(private branchService: CommonService) { }
 
-  save(): void {
-    this.branchService.create(this.branch, this.branchesUrl).subscribe(branch => this.branches.push(branch), error => console.log(error));
-    // this.branch = {id: 0, name: ' '};
+  save(myForm: FormGroup): void {
+    this.branchService.checkDuplicity(this.branch, this.branchesUrl).subscribe(obj => {
+      this.duplicity = obj.duplicity;
+      if (this.duplicity) {
+        this.duplicityErrorMsg = 'Sorry, name already exists.';
+      } else {
+        this.branchService.create(this.branch, this.branchesUrl)
+          .subscribe(branch => {
+            this.branches.push(branch);
+            myForm.reset();
+          }, error => console.log(error));
+        }
+      }, e => console.log(e)
+    );
   }
 
   deleteBranch(branch: Branch): void {

@@ -17,6 +17,7 @@
         <md-input-container style="width:100%;">
           <input mdInput placeholder="Department name" name="name" [(ngModel)]="department.name">
         </md-input-container>
+        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
         <md-select style="width: 100%;"  placeholder="Select Branch" [(ngModel)]="department.branch_id" name="branch_id">
           <md-option *ngFor="let branch of branches" [value]="branch.id">
             {{branch.name}}
@@ -24,7 +25,7 @@
         </md-select>
         <br>
         <br>
-        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset();" >Save</button>
+        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
       </form>
 
     </div>
@@ -32,12 +33,18 @@
   <md-grid-tile>
     <div style="width: 70%; height:80%;">
       <md-card style="width: 100%; height: calc(100vh - 200px); overflow-y:auto;">
-        <h2>Departments List</h2>
+        <h2>Departments List of
+          <md-select placeholder="Select Branch" [(ngModel)]="selectedBranch" (change)="changeDepartments(selectedBranch)">
+            <md-option *ngFor="let branch of branches" [value]="branch.name">
+              {{branch.name}}
+            </md-option>
+          </md-select>
+        </h2>
         <hr>
         <md-list>
-          <md-list-item *ngFor="let department of departments">
+          <md-list-item *ngFor="let department of departmentsByBranch">
             <!--<md-icon md-list-icon>delete</md-icon>-->
-            <h3 md-line> {{department.name}} under {{department.branch}}</h3>
+            <h3 md-line> {{department.name}} </h3>
             <button md-raised-button color="primary" (click)="deleteDepartment(department)" >Delete</button>
           </md-list-item>
         </md-list>

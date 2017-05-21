@@ -12,7 +12,7 @@ export class CommonService {
   constructor(private http: Http) { }
 
   create(obj: any, url: string): Observable<any> {
-    console.log(obj);
+    // console.log(obj);
     return this.http
       .post(url, JSON.stringify(obj), {headers: this.headers})
       .map((res: Response) => res.json())
@@ -31,5 +31,23 @@ export class CommonService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  checkDuplicity(obj: any, url: string): Observable<any> {
+    return this.http
+      .post(`${url}/${obj.name}`, JSON.stringify(obj), {headers: this.headers})
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+/*
+  this.commonService.checkDuplicity(this., this.Url).subscribe(obj => {
+  this.duplicity = obj.duplicity;
+  if (this.duplicity) {
+  this.duplicityErrorMsg = 'Sorry, name already exists.';
+} else {
+
+}
+}, e => console.log(e)
+);
+*/
 }
 

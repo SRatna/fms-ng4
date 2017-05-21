@@ -17,10 +17,11 @@
         <md-input-container style="width:100%;">
           <input mdInput placeholder="Project name" name="name" [(ngModel)]="project.name">
         </md-input-container>
+        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
         <md-input-container style="width:100%;">
           <input mdInput placeholder="Project duration" name="duration" [(ngModel)]="project.duration">
         </md-input-container>
-        <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset()" >Save</button>
+        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
       </form>
 
     </div>

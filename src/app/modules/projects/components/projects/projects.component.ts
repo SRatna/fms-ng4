@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../../../services/common.service';
 import { Project } from '../../classes/project';
+import { FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -11,13 +13,25 @@ export class ProjectsComponent implements OnInit {
   project = new Project();
   projects: Project[];
   private Url = 'http://localhost/advanced/api/web/v1/projects';
-
+  duplicity: boolean;
+  duplicityErrorMsg: string;
 
   constructor(private commonService: CommonService) { }
 
-  save(): void {
-    this.commonService.create(this.project, this.Url)
-      .subscribe(obj => this.projects.push(obj), error => console.log(error));
+  save(myForm: FormGroup): void {
+    this.commonService.checkDuplicity(this.project, this.Url).subscribe(obj => {
+        this.duplicity = obj.duplicity;
+        if (this.duplicity) {
+          this.duplicityErrorMsg = 'Sorry, name already exists.';
+        } else {
+          this.commonService.create(this.project, this.Url)
+            .subscribe(obj => {
+              this.projects.push(obj);
+              myForm.reset();
+        }, error => console.log(error));
+        }
+      }, e => console.log(e)
+    );
   }
 
   deleteProject(project: Project): void {

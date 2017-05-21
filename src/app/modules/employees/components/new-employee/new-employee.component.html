@@ -10,6 +10,7 @@
   }
   md-select{
     margin: 16px 0px;
+    padding-bottom: 6px;
   }
 </style>
 <div style="padding: 16px; overflow-y: auto; height: calc(100vh - 155px);">
@@ -28,6 +29,12 @@
             </md-option>
           </md-select>
         </td>
+        <td>
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Registered User Id" disabled [value]="employee.reg_id == undefined ? null : employee.reg_id">
+          </md-input-container>
+        </td>
+        <td>
       </tr>
       <h3>Official Details</h3>
       <tr>
@@ -239,7 +246,7 @@
         </td>
       </tr>
     </table>
-    <button md-raised-button color="primary" type="submit" (click)="save(); myForm.reset();" >Save Employee</button>
+    <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save Employee</button>
   </form>
 
 </div>

@@ -3,6 +3,7 @@ import { CommonService } from '../../../../services/common.service';
 import * as _ from 'underscore';
 import { SubDepartment } from '../../classes/sub-department';
 import { Department } from '../../../departments/classes/department';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sub-department',
@@ -16,16 +17,26 @@ export class SubDepartmentComponent implements OnInit {
   departments: Department[];
   private subDepartmentsUrl = 'http://localhost/advanced/api/web/v1/subdepartments';
   private departmentsUrl = 'http://localhost/advanced/api/web/v1/departments';
-
+  duplicity: boolean;
+  duplicityErrorMsg: string;
 
   constructor(private commonService: CommonService) { }
 
-  save(): void {
-    this.commonService.create(this.subDepartment, this.subDepartmentsUrl).subscribe(subdepartment => {
-      const itsDepartment = _.findWhere(this.departments, {id: subdepartment.department_id});
-      subdepartment.department = itsDepartment.name;
-      this.subDepartments.push(subdepartment);
-    }, error => console.log(error));
+  save(myForm: FormGroup): void {
+    this.commonService.checkDuplicity(this.subDepartment, this.subDepartmentsUrl).subscribe(obj => {
+        this.duplicity = obj.duplicity;
+        if (this.duplicity) {
+          this.duplicityErrorMsg = 'Sorry, name already exists.';
+        } else {
+          this.commonService.create(this.subDepartment, this.subDepartmentsUrl).subscribe(subdepartment => {
+            const itsDepartment = _.findWhere(this.departments, {id: subdepartment.department_id});
+            subdepartment.department = itsDepartment.name;
+            this.subDepartments.push(subdepartment);
+            myForm.reset();
+          }, error => console.log(error));
+        }
+      }, e => console.log(e)
+    );
   }
 
   deleteSubDepartment(subdepartment: SubDepartment): void {
