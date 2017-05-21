@@ -33,10 +33,16 @@
   <md-grid-tile>
     <div style="width: 70%; height:80%;">
       <md-card style="width: 100%; height: calc(100vh - 200px); overflow-y:auto;">
-        <h2>Sub Departments List</h2>
+        <h2>Sub Departments List of
+          <md-select style="width:100%;" [(ngModel)]="selectedDepartment" (click)="changeDepartments(selectedDepartment)">
+            <md-option *ngFor="let department of departments" [value]="department.id">
+              {{department.name}} Department
+            </md-option>
+          </md-select>
+        </h2>
         <hr>
         <md-list>
-          <md-list-item *ngFor="let subDepartment of subDepartments">
+          <md-list-item *ngFor="let subDepartment of subDepartmentsByDepartments">
             <!--<md-icon md-list-icon>delete</md-icon>-->
             <h3 md-line> {{subDepartment.name}} under {{subDepartment.department}}</h3>
             <button md-raised-button color="primary" (click)="deleteSubDepartment(subDepartment)" >Delete</button>

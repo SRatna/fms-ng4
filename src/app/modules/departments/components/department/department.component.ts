@@ -4,6 +4,7 @@ import { Branch } from '../../../branches/classes/branch';
 import { CommonService } from '../../../../services/common.service';
 import * as _ from 'underscore';
 import { FormGroup } from '@angular/forms';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-department',
@@ -25,7 +26,7 @@ export class DepartmentComponent implements OnInit {
 
   constructor(private commonService: CommonService) { }
 
-  changeDepartments(branch: string) {
+  changeBranches(branch: string) {
     this.departmentsByBranch = this.departments.filter(d => d.branch === branch);
   }
 
@@ -39,6 +40,11 @@ export class DepartmentComponent implements OnInit {
             const newBranch = _.findWhere(this.branches, {id: department.branch_id});
             department.branch = newBranch.name;
             this.departments.push(department);
+            if (this.selectedBranch != null) {
+              if (this.selectedBranch === newBranch.name) {
+                this.departmentsByBranch.push(department);
+              }
+            }
             myForm.reset();
           }, error => console.log(error));
         }

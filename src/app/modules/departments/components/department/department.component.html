@@ -34,9 +34,9 @@
     <div style="width: 70%; height:80%;">
       <md-card style="width: 100%; height: calc(100vh - 200px); overflow-y:auto;">
         <h2>Departments List of
-          <md-select placeholder="Select Branch" [(ngModel)]="selectedBranch" (change)="changeDepartments(selectedBranch)">
+          <md-select style="width:100%;" [(ngModel)]="selectedBranch" (change)="changeBranches(selectedBranch)">
             <md-option *ngFor="let branch of branches" [value]="branch.name">
-              {{branch.name}}
+              {{branch.name}} Branch
             </md-option>
           </md-select>
         </h2>

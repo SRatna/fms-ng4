@@ -19,8 +19,14 @@ export class SubDepartmentComponent implements OnInit {
   private departmentsUrl = 'http://localhost/advanced/api/web/v1/departments';
   duplicity: boolean;
   duplicityErrorMsg: string;
+  selectedDepartment: string;
+  subDepartmentsByDepartments: SubDepartment[] = [];
 
   constructor(private commonService: CommonService) { }
+
+  changeDepartments(department: string) {
+    this.subDepartmentsByDepartments = this.subDepartments.filter(sd => sd.department === department);
+  }
 
   save(myForm: FormGroup): void {
     this.commonService.checkDuplicity(this.subDepartment, this.subDepartmentsUrl).subscribe(obj => {
@@ -32,6 +38,11 @@ export class SubDepartmentComponent implements OnInit {
             const itsDepartment = _.findWhere(this.departments, {id: subdepartment.department_id});
             subdepartment.department = itsDepartment.name;
             this.subDepartments.push(subdepartment);
+            if (this.selectedDepartment != null) {
+              if (this.selectedDepartment === itsDepartment.name) {
+                this.subDepartmentsByDepartments.push(subdepartment);
+              }
+            }
             myForm.reset();
           }, error => console.log(error));
         }
