@@ -246,7 +246,7 @@
         </td>
       </tr>
     </table>
-    <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save Employee</button>
+    <button [disabled]="!myForm.valid" md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save Employee</button>
   </form>
 
 </div>
