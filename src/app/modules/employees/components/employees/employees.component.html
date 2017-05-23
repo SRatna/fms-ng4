@@ -1,3 +1,39 @@
-<p>
-  employees works!
-</p>
+<md-toolbar color="primary">
+  All Employees
+</md-toolbar>
+<style>
+  section{
+    position: absolute;
+    left:0px;
+    /*padding:16px;*/
+    top: 0px;
+    width: 100%;
+    height: 200px;
+  }
+  md-card{
+    height: 100%;
+    margin: 10px;
+  }
+</style>
+<div style="overflow-y: auto; height: calc(100vh - 128px);">
+<md-grid-list cols="3">
+  <md-grid-tile>
+    <section>
+      <md-card>
+        <md-card-title>Sushanta Adhikari</md-card-title>
+        <md-card-content>
+          <b>Gender: </b> Male <br>
+          <b>Gender: </b> Male <br>
+          <b>Gender: </b> Male <br>
+          <b>Gender: </b> Male <br>
+          <b>Gender: </b> Male <br>
+        </md-card-content>
+        <md-card-actions>
+          <button md-button color="primary" >View Profile</button>
+          <button md-button color="primary" >View Attendance</button>
+        </md-card-actions>
+      </md-card>
+    </section>
+  </md-grid-tile>
+</md-grid-list>
+</div>
