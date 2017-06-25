@@ -1,37 +1,6 @@
-<md-toolbar color="primary" class="mat-elevation-z6">
-  <span>{{title}}</span>
-</md-toolbar>
-<style>
-  h4{
-    margin: 0px;
-    width: 200px;
-    background-color: darkgray;
-    padding: 5px 15px;
-  }
-</style>
-<md-sidenav-container>
-  <md-sidenav mode="side" opened="true" class="mat-elevation-z6" style="overflow-y:auto; height: calc(100vh - 60px);">
-    <md-nav-list >
-      <a md-list-item routerLink="/add-new-employee"> Add New Employee </a>
-      <a md-list-item routerLink="/employees"> All Employees </a>
-      <h4>Entities</h4>
-      <a md-list-item routerLink="/branches"> Branches </a>
-      <a md-list-item routerLink="/departments"> Departments </a>
-      <a md-list-item routerLink="/sub-departments"> Sub Departments </a>
-      <a md-list-item routerLink="/categories"> Categories</a>
-      <a md-list-item routerLink="/countries"> Countries</a>
-      <a md-list-item routerLink="/designations"> Designations</a>
-      <a md-list-item routerLink="/grades"> Grades</a>
-      <a md-list-item routerLink="/modes"> Modes</a>
-      <a md-list-item routerLink="/statuses"> Statuses</a>
-      <a md-list-item routerLink="/types"> Types</a>
-      <a md-list-item routerLink="/projects"> Projects</a>
-    </md-nav-list>
-  </md-sidenav>
   <div class="my-content">
     <router-outlet>
-
     </router-outlet>
   </div>
-</md-sidenav-container>
+
 
