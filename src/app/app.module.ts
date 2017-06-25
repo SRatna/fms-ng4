@@ -26,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonService } from './services/common.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { AuthService } from './services/auth.service';
     AccountModule,
     AppRoutingModule
   ],
-  providers: [CommonService, AuthGuard, AuthService],
+  providers: [CommonService, AuthGuard, AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

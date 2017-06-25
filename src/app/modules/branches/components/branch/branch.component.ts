@@ -19,7 +19,7 @@ export class BranchComponent implements OnInit {
 
   constructor(private branchService: CommonService) { }
 
-  save(myForm: FormGroup): void {
+    save(myForm: FormGroup): void {
     this.branchService.checkDuplicity(this.branch, this.branchesUrl).subscribe(obj => {
       this.duplicity = obj.duplicity;
       if (this.duplicity) {
