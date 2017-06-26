@@ -8,8 +8,7 @@ export class AuthService {
     isLoggedIn = false;
 
     login(): void{
-        console.log('sdfsdfs');
-         this.router.navigate(["/layouts"]);
+         this.router.navigate(["/fms"]);
          this.isLoggedIn = true;
 
     }

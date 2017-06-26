@@ -1,253 +1,239 @@
-<md-toolbar color="primary">
-  New Employee
-</md-toolbar>
-<style>
-  .full-width{
-    width:98%;
-  }
-  .less-width{
-    width:100%;
-  }
-  md-select{
-    margin: 16px 0px;
-    padding-bottom: 6px;
-  }
-</style>
-<div style="padding: 16px; overflow-y: auto; height: calc(100vh - 155px);">
-  <form #myForm="ngForm">
-    <table class="less-width" cellspacing="0">
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="User Name" [(ngModel)]="employee.username" name="username">
-          </md-input-container>
-        </td>
-        <td>
-          <md-select placeholder="Registered Users" class="full-width" [(ngModel)]="employee.reg_id" name="reg_id">
-            <md-option *ngFor="let obj of registeredUsers" [value]="obj.id">
-              {{obj.username}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Registered User Id" disabled [value]="employee.reg_id == undefined ? null : employee.reg_id">
-          </md-input-container>
-        </td>
-        <td>
-      </tr>
-      <h3>Official Details</h3>
-      <tr>
-        <td><hr></td>
-        <td><hr></td>
-        <td><hr></td>
-      </tr>
-      <tr>
-        <td>
-          <md-select placeholder="Branch" class="full-width" [(ngModel)]="employee.branch_id" name="branch_id">
-            <md-option *ngFor="let branch of branches" [value]="branch.id">
-              {{branch.name}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-          <md-select placeholder="Department" class="full-width" [(ngModel)]="employee.department_id" name="department_id">
-            <md-option *ngFor="let item of departments" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-          <md-select placeholder="Sub-Department" class="full-width" [(ngModel)]="employee.sub_department_id" name="sub_department_id">
-            <md-option *ngFor="let item of subDepartments" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-select placeholder="Designation" class="full-width" [(ngModel)]="employee.designation_id" name="designation_id">
-            <md-option *ngFor="let item of designations" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-          <md-select placeholder="Grade" class="full-width" [(ngModel)]="employee.grade_id" name="grade_id" >
-            <md-option *ngFor="let item of grades" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-          <md-select placeholder="Mode" class="full-width" [(ngModel)]="employee.mode_id" name="mode_id">
-            <md-option *ngFor="let item of modes" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-select placeholder="Status" class="full-width" [(ngModel)]="employee.status_id" name="status_id">
-            <md-option *ngFor="let item of statuses" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-          <md-select placeholder="Type" class="full-width" [(ngModel)]="employee.type_id" name="type_id">
-            <md-option *ngFor="let item of types" [value]="item.id">
-              {{item.name}}
-            </md-option>
-          </md-select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput pattern="[0-9]{4}/[0-1][0-9]/[0-3][0-9]" placeholder="Joined date in B.S (yyyy/mm/dd)" [(ngModel)]="employee.joined_n_date" name="joined_n_date">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput pattern="[0-9]{4}/[0-1][0-9]/[0-3][0-9]" placeholder="Joined date in A.D (yyyy/mm/dd)" [(ngModel)]="employee.joined_e_date" name="joined_e_date">
-          </md-input-container>
-        </td>
-      </tr>
-      <h3>Personal Details</h3>
-      <tr>
-        <td><hr></td>
-        <td><hr></td>
-        <td><hr></td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="First name" [(ngModel)]="employee.first_name" name="first_name">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Middle name" [(ngModel)]="employee.middle_name" name="middle_name">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Last name" [(ngModel)]="employee.last_name" name="last_name">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input pattern="[0-9]{4}/[0-1][0-9]/[0-3][0-9]" mdInput placeholder="Date of Birth in B.S (yyyy/mm/dd)" [(ngModel)]="employee.dob_n" name="dob_n">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input pattern="[0-9]{4}/[0-1][0-9]/[0-3][0-9]" mdInput placeholder="Date of Birth in A.D (yyyy/mm/dd)" [(ngModel)]="employee.dob_e" name="dob_e">
-          </md-input-container>
-        </td>
-        <td>
-          <md-select placeholder="Gender" class="full-width" [(ngModel)]="employee.gender" name="gender">
-            <md-option value="male">Male</md-option>
-            <md-option value="female">Female</md-option>
-            <md-option value="other">Other</md-option>
-          </md-select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width" >
-            <input type="number" mdInput placeholder="Phone" [(ngModel)]="employee.mobile_number" name="mobile_number">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width" >
-            <input type="email" mdInput placeholder="Email" [(ngModel)]="employee.email" name="email">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Citizenship No" [(ngModel)]="employee.citizenship_no" name="citizenship_no">
-          </md-input-container>
-        </td>
-      </tr>
-      <h3>Permanent Address</h3>
-      <tr>
-        <td><hr></td>
-        <td><hr></td>
-        <td><hr></td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Country" [(ngModel)]="employee.p_country" name="p_country">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Zone" [(ngModel)]="employee.p_zone" name="p_zone">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="District" [(ngModel)]="employee.p_district" name="p_district">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Address" [(ngModel)]="employee.p_address" name="p_address">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Street" [(ngModel)]="employee.p_street" name="p_street">
-          </md-input-container>
-        </td>
-      </tr>
-      <h3>Temporary Address</h3>
-      <tr>
-        <td><hr></td>
-        <td><hr></td>
-        <td><hr></td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Country" [(ngModel)]="employee.t_country" name="t_country">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Zone" [(ngModel)]="employee.t_zone" name="t_zone">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="District" [(ngModel)]="employee.t_district" name="t_district">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Address" [(ngModel)]="employee.t_address" name="t_address">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input type="text" mdInput placeholder="Street" [(ngModel)]="employee.t_street" name="t_street">
-          </md-input-container>
-        </td>
-      </tr>
-    </table>
-    <button [disabled]="!myForm.valid" md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save Employee</button>
-  </form>
+<div class="page-title">
+            <div class="title_left">
+            </div>
+            <div class="title_right">
+              <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                </div>
+              </div>
+            </div>
+          </div>
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+                  <h2>Register User <small></small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <br>
+                  <form #employeeForm='ngForm' (ngSubmit)="registerEmployee()" id="demo-form2"data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                      <label for="" class="control-label"></label>
+                        <input type="text"  placeholder="User Name" class="form-control" [(ngModel)]="employee.username" name="username">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Registered User</label>
+                          <select name="reg_id" [(ngModel)]="employee.reg_id" id="" class="form-control">
+                            <option *ngFor="let obj of registeredUsers" [value]="obj.id">{{obj.name}}</option>
+                          </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Registered User Id</label>
+                          <input class="form-control" placeholder="Registered User Id" disabled [value]="employee.reg_id == undefined ? null : employee.reg_id">
+                      </div>
+                    </div>
+                    <br>
+                    <h4>Official detail</h4>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                      <label for="" class="control-label">Branch</label>
 
-</div>
+                        <select name="branch_id" id="" class="form-control" [(ngModel)]="employee.branch_id">
+                          <option *ngFor="let branch of branches" [value]="branch.id">{{branch.name}}</option>
+                        </select>
 
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="" class="control-label">Department</label>
+
+                        <select name="department._id" id="" class="form-control" [(ngModel)]="employee.department_id">
+                          <option *ngFor="let department of departments" value="department.id"> {{department.name}} </option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Sub Department</label>
+
+                        <select name="sub_department_id" id="" class="form-control" [(ngModel)]="employee.sub_department_id">
+                          <option *ngFor="let item of subDepartments" [value]="item.id">{{item.name}}</option>
+                        </select>
+
+                    </div>
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-md-3">
+                      <label for="" class="control-label">Mode</label>
+                        <select name="mode_id" id="" class="form-control" [(ngModel)]="employee.mode_id">
+                          <option *ngFor="let item of modes" [value]="item.id">{{item.name}}</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="" class="control-label">Status</label>
+
+                        <select name="mode_id" id="" class="form-control" [(ngModel)]="employee.status_id">
+                          <option *ngFor="let item of status" [value]="item.id">{{item.name}}</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="" class="control-label">Type</label>
+                        <select name="type_id" id="" class="form-control" [(ngModel)]="employee.type_id">
+                          <option *ngFor="let item of types" [value]="item.id">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="" class="control-label">Grade</label>
+                        <select name="grade_id" id="" class="form-control" [(ngModel)]="employee.grade_id">
+                          <option *ngFor="let item of grades" [value]="item.id">{{item.name}}</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                    <label for="" class="control-label">Designation</label>
+                        <select name="designation_id" id="" class="form-control" [(ngModel)]="employee.designation_id">
+                          <option *ngFor="let item of designations" [value]="item.id">{{item.name}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                      <label for="" class="control-label">Nepali Joined Date</label>
+                        <input type="text"  placeholder="Nepali Joined Date" class="form-control" [(ngModel)]="employee.joined_n_date" name="joined_n_date">
+                    </div>
+                    <div class="form-group col-md-4">
+                     <label for="" class="control-label">English Joined Date</label>
+                        <input type="text"  placeholder="English Joined Date" class="form-control" [(ngModel)]="employee.joined_e_date" name="joined_e_date">
+                    </div>
+                    </div>
+                    <br>
+                    <h4>Personal Information</h4>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                      <label for="" class="control-label">First Name</label>
+                        <input type="text"  placeholder="First Name" class="form-control" [(ngModel)]="employee.first_name" name="first_name">
+                    </div>
+                    <div class="form-group col-md-4">
+                       <label for="" class="control-label">Middle Name</label>
+                        <input type="text"  placeholder="Middle Name" class="form-control" [(ngModel)]="employee.middle_name" name="middle_name">
+                    </div>
+                    <div class="form-group col-md-4">
+                       <label for="" class="control-label">Last Name</label>
+                        <input type="text"  placeholder="Last Name" class="form-control" [(ngModel)]="employee.last_name" name="last_name">
+                    </div>
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-md-4">
+                       <label for="" class="control-label">Date of Birth in Nepali</label>
+                        <input type="text"  placeholder="Date of Birth" class="form-control" [(ngModel)]="employee.dob_n" name="dob_n">
+
+                    </div>
+                    <div class="form-group col-md-4">
+                     <label for="" class="control-label">Date of Birth in English</label>
+                        <input type="text"  placeholder="Date of Birth" class="form-control" [(ngModel)]="employee.dob_e" name="dob_e">
+                      </div>
+
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Gender</label>
+                        <select name="gender" id="" class="form-control" [(ngModel)]="employee.gender">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="others">Others</option>
+                        </select>
+
+                      </div>
+                    </div>
+                    <div class="row">
+                   <div class="form-group col-md-4">
+                     <label for="" class="control-label">Email</label>
+                        <input type="text"  placeholder="Email" class="form-control" [(ngModel)]="employee.email" name="email">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Citizenship No</label>
+                        <input type="text"  placeholder="Citizenship No" class="form-control" [(ngModel)]="employee.citizenship_no" name="citizenship_no">
+                    </div>
+
+                    </div>
+                    <br>
+                    <h4>Temporary Address</h4>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                      <label for="" class="control-label">Temporary Country</label>
+                        <input type="text"  placeholder="Temporary Country" class="form-control" [(ngModel)]="employee.t_country" name="t_country">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Temporary Zone</label>
+                        <input type="text"  placeholder="Temporary Zone" class="form-control" [(ngModel)]="employee.t_zone" name="t_zone">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Temporary Address</label>
+                        <input type="text"  placeholder="Temporary Address" class="form-control" [(ngModel)]="employee.t_address" name="t_address">
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                       <label for="" class="control-label">Temporary District</label>
+                        <input type="text"  placeholder="Temporary District" class="form-control" [(ngModel)]="employee.t_district" name="t_district">
+                      </div>
+                    <div class="form-group col-md-4">
+                     <label for="" class="control-label">Temporary Street</label>
+                        <input type="text"  placeholder="Temporary Street" class="form-control" [(ngModel)]="employee.t_street" name="t_street">
+                      </div>
+                    </div>
+                    <br>
+                    <h4>Permanent Address</h4>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                      <label for="" class="control-label">Permanent Country</label>
+                        <input type="text"  placeholder="Permanent Country" class="form-control" [(ngModel)]="employee.p_country" name="p_country">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Permanent Zone</label>
+                        <input type="text"  placeholder="Permanent Zone" class="form-control" [(ngModel)]="employee.p_zone" name="p_zone">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Permanent Address</label>
+                        <input type="text"  placeholder="Permanent Address" class="form-control" [(ngModel)]="employee.p_address" name="p_address">
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                       <label for="" class="control-label">Permanent District</label>
+                        <input type="text"  placeholder="Permanent District" class="form-control" [(ngModel)]="employee.p_district" name="p_district">
+                      </div>
+                    <div class="form-group col-md-4">
+                     <label for="" class="control-label">Permanent Street</label>
+                        <input type="text"  placeholder="Permanent Street" class="form-control" [(ngModel)]="employee.p_street" name="p_street">
+                    </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+      </div>
+    </div>
+  </div>

@@ -1,9 +1,6 @@
 export class Employee {
   id: number;
-  user_id?: number;
-  reg_id: number;
-  reg_username?: string;
-  username: string;
+  user_id: number;
   first_name: string;
   middle_name: string;
   last_name: string;
@@ -25,20 +22,20 @@ export class Employee {
   t_address: string;
   t_street: string;
   branch_id: number;
-  branch?: string;
+  branch?: any;
   mode_id: number;
-  mode?: string;
+  mode?: any;
   department_id: number;
-  department?: string;
+  department?: any;
   sub_department_id: number;
-  sub_department?: string;
+  sub_department?: any;
   designation_id: number;
-  designation?: string;
+  designation?: any;
   grade_id: number;
-  grade?: string;
+  grade?: any;
   status_id: number;
-  status?: string;
+  status?: any;
   type_id: number;
-  type?: string;
+  type?: any;
   mobile_number: number;
 }

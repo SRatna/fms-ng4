@@ -16,7 +16,6 @@ import { DashboardComponent } from './components/dashboard.component';
     DashboardRoutingModule,
     BrowserAnimationsModule,
     CustomMaterialModule],
-    declarations: [DashboardComponent],
-
+    declarations: [DashboardComponent]
 })
 export class DashboardModule { };

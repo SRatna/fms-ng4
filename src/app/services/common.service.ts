@@ -38,5 +38,9 @@ export class CommonService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  getServer(): string{
+    return 'http://192.168.1.124:9090/api/';
+  }
 }
 

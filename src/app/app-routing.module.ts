@@ -8,7 +8,7 @@ const appRoutes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    component: LayoutComponent
+    component: LayoutComponent,
   },
   { path: '**', component: PageNotFoundComponent },
 
