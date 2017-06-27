@@ -14,12 +14,10 @@ $(function () {
             $(this).parent().removeClass('active');
             $(this).siblings().slideUp();
         } else {
-            console.log('dsfs');
                 $('#sidebar-menu li').removeClass('active');
                 $('#sidebar-menu li ul').slideUp();
                 $(this).parent().addClass('active');
                 $(this).siblings().slideDown();
-
              }
     });
 

@@ -19,6 +19,7 @@ import { AccountModule } from './modules/account/account.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './modules/layout/layout.module';
+import { EntitiesModule } from './modules/entities/entities.modules';
 import 'hammerjs';
 import { CustomMaterialModule } from './custom-material.module';
 import { PageNotFoundComponent } from './page-not-found.component';
@@ -54,7 +55,8 @@ import { DataService } from './services/data.service';
     ProjectsModule,
     DashboardModule,
     AccountModule,
-    AppRoutingModule
+    AppRoutingModule,
+    EntitiesModule
   ],
   providers: [CommonService, AuthGuard, AuthService, DataService],
   bootstrap: [AppComponent]

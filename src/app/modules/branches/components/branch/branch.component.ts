@@ -16,7 +16,7 @@ export class BranchComponent implements OnInit {
   branch = new Branch();
   branches: any;
   branchesUrl: string;
-
+  presentComponent: string;
 
 
   constructor(private branchService: CommonService, private dataService: DataService) { }
