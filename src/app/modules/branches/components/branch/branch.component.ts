@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Branch } from '../../classes/branch';
 import { CommonService } from '../../../../services/common.service';
-import {FormGroup} from '@angular/forms';
-
+import { FormGroup } from '@angular/forms';
+import { DataService } from '../../../../services/data.service';
+import { Response } from '@angular/http';
 @Component({
   selector: 'app-branch',
   templateUrl: './branch.component.html',
@@ -13,26 +14,20 @@ export class BranchComponent implements OnInit {
   duplicity: boolean;
   duplicityErrorMsg: string;
   branch = new Branch();
-  branches: Branch[];
-  private branchesUrl = 'http://localhost/advanced/api/web/v1/branches';
+  branches: any;
+  branchesUrl: string;
 
 
-  constructor(private branchService: CommonService) { }
+
+  constructor(private branchService: CommonService, private dataService: DataService) { }
 
   save(myForm: FormGroup): void {
-    this.branchService.checkDuplicity(this.branch, this.branchesUrl).subscribe(obj => {
-      this.duplicity = obj.duplicity;
-      if (this.duplicity) {
-        this.duplicityErrorMsg = 'Sorry, name already exists.';
-      } else {
-        this.branchService.create(this.branch, this.branchesUrl)
-          .subscribe(branch => {
-            this.branches.push(branch);
-            myForm.reset();
-          }, error => console.log(error));
-        }
-      }, e => console.log(e)
-    );
+
+    this.dataService.saveData(this.branchesUrl, this.branch)
+      .subscribe((response: Response) => {
+        this.branches.push(response.json());
+    },error=>console.log(error))  ;
+
   }
 
   deleteBranch(branch: Branch): void {
@@ -44,12 +39,16 @@ export class BranchComponent implements OnInit {
   }
 
   getBranches(): void {
-    this.branchService
-      .getObjects(this.branchesUrl)
-      .subscribe(branches => this.branches = branches, err => console.log(err));
+    this.dataService
+      .getDatas(this.branchesUrl)
+      .subscribe((branches: Response) => {
+        this.branches = branches.json().objects;
+      }, err => console.log(err));
   }
 
   ngOnInit() {
-     this.getBranches();
+    this.branchesUrl = this.branchService.getServer()+'branch';
+    this.getBranches();
+
   }
 }

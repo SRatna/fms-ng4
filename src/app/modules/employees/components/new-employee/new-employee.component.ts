@@ -10,6 +10,9 @@ import { Status } from '../../../statuses/classes/status';
 import { Designation } from '../../../designations/classes/designation';
 import { RegisteredUser } from '../../../registered-users/classes/registered-user';
 import { CommonService } from '../../../../services/common.service';
+import { DataService } from '../../../../services/data.service';
+import { Response } from '@angular/http';
+import * as _ from 'underscore';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -21,31 +24,31 @@ export class NewEmployeeComponent implements OnInit {
 
   employee = new Employee();
   employees: Employee[] = [];
+  branches: any;
+  departments: any;
+  subDepartments: any;
+  grades: any;
+  modes: any;
+  types: any;
+  statuses: any;
+  designations: any;
+  registeredUsers: any;
+  server: any;
+  branchesUrl: any;
+  departmentsUrl: any;
+  subDepartmentsUrl: any;
+  gradesUrl: any;
+  modesUrl: any;
+  typesUrl: any;
+  statusesUrl: any;
+  designationsUrl: any;
+  registeredUsersUrl: any;
+  saveEmployeesUrl: string;
 
-  branches: Branch[];
-  departments: Department[];
-  subDepartments: SubDepartment[];
-  grades: Grade[];
-  modes: Mode[];
-  types: Type[];
-  statuses: Status[];
-  designations: Designation[];
-  registeredUsers: RegisteredUser[];
+  constructor(private commonService: CommonService, private dataService: DataService) { }
 
-  private branchesUrl = 'http://localhost/advanced/api/web/v1/branches';
-  private departmentsUrl = 'http://localhost/advanced/api/web/v1/departments';
-  private subDepartmentsUrl = 'http://localhost/advanced/api/web/v1/subdepartments';
-  private gradesUrl = 'http://localhost/advanced/api/web/v1/grades';
-  private modesUrl = 'http://localhost/advanced/api/web/v1/modes';
-  private typesUrl = 'http://localhost/advanced/api/web/v1/types';
-  private statusesUrl = 'http://localhost/advanced/api/web/v1/statuses';
-  private designationsUrl = 'http://localhost/advanced/api/web/v1/designations';
-  private registeredUsersUrl = 'http://localhost/advanced/api/web/v1/registerusers';
-  private saveEmployeesUrl = 'http://localhost/advanced/api/web/v1/employee/create-employee';
 
-  constructor(private commonService: CommonService) { }
-
-  save(myForm: FormGroup): void {
+  registerEmployee(myForm: FormGroup): void {
     this.commonService.create(this.employee, this.saveEmployeesUrl)
       .subscribe(obj => {
         myForm.reset();
@@ -53,61 +56,77 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   getBranches(): void {
-    this.commonService
-      .getObjects(this.branchesUrl)
-      .subscribe(branches => this.branches = branches, err => console.log(err));
+    this.dataService
+      .getDatas(this.branchesUrl)
+      .subscribe((objects: Response) => {
+        this.branches = objects.json().objects;
+      }, err => console.log(err));
   }
 
   getDepartments(): void {
-    this.commonService
-      .getObjects(this.departmentsUrl)
-      .subscribe(objects => this.departments = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.departmentsUrl)
+      .subscribe(objects => this.departments = objects.json().objects, err => console.log(err));
   }
 
   getSubDepartments(): void {
-    this.commonService
-      .getObjects(this.subDepartmentsUrl)
-      .subscribe(objects => this.subDepartments = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.subDepartmentsUrl)
+      .subscribe((objects: Response) => this.subDepartments = objects.json().objects, err => console.log(err));
   }
 
   getGrades(): void {
-    this.commonService
-      .getObjects(this.gradesUrl)
-      .subscribe(objects => this.grades = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.gradesUrl)
+      .subscribe((objects: Response) => this.grades = objects.json().objects, err => console.log(err));
   }
 
   getModes(): void {
-    this.commonService
-      .getObjects(this.modesUrl)
-      .subscribe(objects => this.modes = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.modesUrl)
+      .subscribe((objects: Response) => this.modes = objects.json().objects, err => console.log(err));
   }
 
   getTypes(): void {
-    this.commonService
-      .getObjects(this.typesUrl)
-      .subscribe(objects => this.types = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.typesUrl)
+      .subscribe((objects: Response) => this.types = objects.json().objects, err => console.log(err));
   }
 
   getStatuses(): void {
-    this.commonService
-      .getObjects(this.statusesUrl)
-      .subscribe(objects => this.statuses = objects, err => console.log(err));
+    console.log(this.statusesUrl);
+    this.dataService
+      .getDatas(this.statusesUrl)
+      .subscribe((objects: Response) => this.statuses = objects.json().objects, err => console.log(err));
   }
 
   getDesignations(): void {
-    this.commonService
-      .getObjects(this.designationsUrl)
-      .subscribe(objects => this.designations = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.designationsUrl)
+      .subscribe((objects: Response) => this.designations = objects.json().objects, err => console.log(err));
   }
 
   getRegisteredUsers(): void {
-    this.commonService
-      .getObjects(this.registeredUsersUrl)
-      .subscribe(objects => this.registeredUsers = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.registeredUsersUrl)
+      .subscribe((objects: Response) => {
+        this.registeredUsers = objects.json().objects;
+      }, err => console.log(err));
   }
 
 
   ngOnInit() {
+    this.server = this.commonService.getServer();
+    this.branchesUrl = this.server + 'branch';
+    this.departmentsUrl = this.server + 'department';
+    this.subDepartmentsUrl = this.server + 'sub_department';
+    this.gradesUrl = this.server + 'grade';
+    this.modesUrl = this.server + 'mode';
+    this.typesUrl = this.server + 'type';
+    this.statusesUrl = this.server + 'status';
+    this.designationsUrl = this.server + 'designation';
+    this.registeredUsersUrl = this.server + 'user';
+    this.saveEmployeesUrl = this.server + 'employee';
     this.getStatuses();
     this.getBranches();
     this.getGrades();

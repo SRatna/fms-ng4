@@ -1,15 +1,89 @@
-<md-toolbar color="primary">
-  Branches
-</md-toolbar>
-<style>
-  div{
-    position: absolute;
-    left:0px;
-    padding:16px;
-    top: 0px;
-  }
-</style>
-<md-grid-list cols="2">
+<div class="page-title">
+  <div class="title_left">
+    <h3>
+      Branch
+    </h3>
+  </div>
+  <div class="title_right">
+    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+     <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+   </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="x_panel">
+      <div class="x_title">
+          <h2>Input Mask</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                  </li>
+                <li><a href="#">Settings 2</a>
+                  </li>
+              </ul>
+            </li>
+             <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+          </ul>
+          <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br>
+        <form class="form-horizontal form-label-left" (ngSubmit) = "save()">
+          <div class="form-group"><label for="" class="control-label">Branch Name</label>
+          <input type="text" name="name" class="form-control" [(ngModel)]="branch.name">
+          </div>
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-9 col-md-offset-3">
+              <button type="submit" class="btn btn-primary">Reset</button>
+              <button type="submit"  class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="x_panel">
+      <div class="x_title">
+          <h2>Branch List</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                  </li>
+                <li><a href="#">Settings 2</a>
+                  </li>
+              </ul>
+            </li>
+             <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+          </ul>
+          <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <ul class="to_do">
+          <li *ngFor="let branch of branches" id="branch.id"><a href="#">{{branch.name}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<md-grid-list cols="2">
   <md-grid-tile>
     <div style="width:70%; ">
       <form #myForm="ngForm">
@@ -29,12 +103,12 @@
         <hr>
         <md-list>
           <md-list-item *ngFor="let branch of branches">
-            <!--<md-icon md-list-icon>delete</md-icon>-->
-            <h3 md-line> {{branch.name}} </h3>
+            <md-icon md-list-icon>delete</md-icon>-->
+            <!--<h3 md-line> {{branch.name}} </h3>
             <button md-raised-button color="primary" (click)="deleteBranch(branch)" >Delete</button>
           </md-list-item>
         </md-list>
       </md-card>
     </div>
   </md-grid-tile>
-</md-grid-list>
+</md-grid-list>-->

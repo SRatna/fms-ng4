@@ -14,13 +14,19 @@ import { ModesModule } from './modules/modes/modes.module';
 import { TypesModule } from './modules/types/types.module';
 import { StatusesModule } from './modules/statuses/statuses.module';
 import { ProjectsModule } from './modules/projects/projects.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { AccountModule } from './modules/account/account.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from './modules/layout/layout.module';
 import 'hammerjs';
 import { CustomMaterialModule } from './custom-material.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonService } from './services/common.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +39,7 @@ import { CommonService } from './services/common.service';
     CustomMaterialModule,
     FormsModule,
     HttpModule,
+    LayoutModule,
     EmployeesModule,
     BranchesModule,
     DepartmentsModule,
@@ -45,9 +52,11 @@ import { CommonService } from './services/common.service';
     TypesModule,
     StatusesModule,
     ProjectsModule,
+    DashboardModule,
+    AccountModule,
     AppRoutingModule
   ],
-  providers: [CommonService],
+  providers: [CommonService, AuthGuard, AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
