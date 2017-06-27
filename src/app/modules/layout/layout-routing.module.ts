@@ -12,7 +12,7 @@ import { ModesComponent } from '../modes/components/modes/modes.component';
 import { GradesComponent } from '../grades/components/grades/grades.component';
 import { DesignationsComponent } from '../designations/components/designations/designations.component';
 import { ProjectsComponent } from '../projects/components/projects/projects.component';
-
+import { EmployeeAttendence } from '../employees/components/employee-attendence/employee-attendence.component';
 import { NewEmployeeComponent } from '../employees/components/new-employee/new-employee.component';
 const appRoutes: Routes = [
   {
@@ -65,7 +65,11 @@ const appRoutes: Routes = [
       },
       {
         path: 'project',
-        component: ProjectsComponent  
+        component: ProjectsComponent
+      },
+      {
+        path: 'employee-attendence',
+        component: EmployeeAttendence
       }
 
     ]

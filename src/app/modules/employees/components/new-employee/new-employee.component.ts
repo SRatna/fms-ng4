@@ -108,7 +108,6 @@ constructor(private commonService: CommonService, private dataService:DataServic
     this.dataService
       .getDatas(this.registeredUsersUrl)
       .subscribe((objects: Response) => {
-        console.log( objects.json());
         this.registeredUsers = objects.json().objects
       }, err => console.log(err));
   }

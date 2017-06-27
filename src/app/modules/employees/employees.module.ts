@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { CustomMaterialModule } from '../../custom-material.module';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { EmployeeAttendence } from './components/employee-attendence/employee-attendence.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import { EmployeesComponent } from './components/employees/employees.component';
     FormsModule,
     HttpModule
   ],
-  declarations: [NewEmployeeComponent, EmployeesComponent]
+  declarations: [NewEmployeeComponent, EmployeesComponent, EmployeeAttendence]
 })
 export class EmployeesModule { }

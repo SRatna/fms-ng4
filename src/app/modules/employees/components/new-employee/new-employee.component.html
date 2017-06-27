@@ -46,7 +46,7 @@
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Registered User</label>
                           <select name="reg_id" [(ngModel)]="employee.reg_id" id="" class="form-control">
-                            <option *ngFor="let obj of registeredUsers" [value]="obj.id">{{obj.name}}</option>
+                            <option *ngFor="let obj of registeredUsers" [value]="obj.id">{{obj.name}}<span *ngIf="obj.name == ''">{{obj.id}}</span></option>
                           </select>
                     </div>
                     <div class="form-group col-md-4">

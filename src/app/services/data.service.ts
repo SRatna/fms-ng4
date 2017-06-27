@@ -10,4 +10,10 @@ export class DataService {
     getDatas(url: string) {
        return this.http.get(url);
     }
+    saveData(url: string, data: object) {
+        return this.http.post(url, data);
+    }
+    getDataByDateRange(url:string,data:any) {
+        return this.http.post(url,data);
+    }
 }
