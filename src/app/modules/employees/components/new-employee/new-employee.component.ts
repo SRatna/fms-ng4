@@ -10,7 +10,6 @@ import { Status } from '../../../statuses/classes/status';
 import { Designation } from '../../../designations/classes/designation';
 import { RegisteredUser } from '../../../registered-users/classes/registered-user';
 import { CommonService } from '../../../../services/common.service';
-import * as _ from 'underscore';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -49,26 +48,6 @@ export class NewEmployeeComponent implements OnInit {
   save(myForm: FormGroup): void {
     this.commonService.create(this.employee, this.saveEmployeesUrl)
       .subscribe(obj => {
-        // const foundBranch = _.findWhere(this.branches, {id: obj.branch_id});
-        // const foundDepartment = _.findWhere(this.departments, {id: obj.department_id});
-        // const foundSubDepartment = _.findWhere(this.subDepartments, {id: obj.sub_department_id});
-        // const foundGrade = _.findWhere(this.grades, {id: obj.grade_id});
-        // const foundType = _.findWhere(this.types, {id: obj.type_id});
-        // const foundDesignation = _.findWhere(this.designations, {id: obj.designation_id});
-        // const foundMode = _.findWhere(this.modes, {id: obj.mode_id});
-        // const foundStatus = _.findWhere(this.statuses, {id: obj.status_id});
-        // const foundRegisteredUser = _.findWhere(this.registeredUsers, {id: obj.reg_id});
-        // obj.branch = foundBranch.name;
-        // obj.department = foundDepartment.name;
-        // obj.sub_department = foundSubDepartment.name;
-        // obj.grade = foundGrade.name;
-        // obj.type = foundType.name;
-        // obj.designation = foundDesignation.name;
-        // obj.mode = foundMode.name;
-        // obj.status = foundStatus.name;
-        // obj.reg_username = foundRegisteredUser.name;
-        // this.employees.push(obj);
-        // console.log(obj);
         myForm.reset();
       }, error => console.log(error));
   }
