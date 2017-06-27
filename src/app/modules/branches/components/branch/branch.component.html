@@ -77,38 +77,9 @@
       </div>
       <div class="x_content">
         <ul class="to_do">
-          <li *ngFor="let branch of branches" id="branch.id"><a href="#">{{branch.name}}</a></li>
+          <li *ngFor="let branch of branches" id="branch.id"><a href="#">{{branch.name}}</a><a href="#"><i class="fa fa-pencil"></i></a><a href="#"><i class="fa fa-pencil"></i></a></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
-<!--<md-grid-list cols="2">
-  <md-grid-tile>
-    <div style="width:70%; ">
-      <form #myForm="ngForm">
-        <md-input-container style="width:100%;">
-          <input mdInput placeholder="Branch name" name="name" [(ngModel)]="branch.name">
-        </md-input-container>
-        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
-        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
-      </form>
-
-    </div>
-  </md-grid-tile>
-  <md-grid-tile>
-    <div style="width: 70%; height:80%;">
-      <md-card style="width: 100%; height: calc(100vh - 200px); overflow-y:auto;">
-        <h2>Branches List</h2>
-        <hr>
-        <md-list>
-          <md-list-item *ngFor="let branch of branches">
-            <md-icon md-list-icon>delete</md-icon>-->
-            <!--<h3 md-line> {{branch.name}} </h3>
-            <button md-raised-button color="primary" (click)="deleteBranch(branch)" >Delete</button>
-          </md-list-item>
-        </md-list>
-      </md-card>
-    </div>
-  </md-grid-tile>
-</md-grid-list>-->
