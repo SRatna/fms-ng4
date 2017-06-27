@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BranchComponent } from './components/branch/branch.component';
 
 const appRoutes: Routes = [
-  { path: 'branches', component: BranchComponent },
+  //{ path: 'branches', component: BranchComponent },
 ];
 @NgModule({
   imports: [
