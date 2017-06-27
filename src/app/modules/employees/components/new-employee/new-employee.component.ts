@@ -21,7 +21,6 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./new-employee.component.css']
 })
 export class NewEmployeeComponent implements OnInit {
-constructor(private commonService: CommonService, private dataService:DataService) { }
 
   employee = new Employee();
   employees: Employee[] = [];
@@ -33,7 +32,7 @@ constructor(private commonService: CommonService, private dataService:DataServic
   types: any;
   statuses: any;
   designations: any;
-  registeredUsers:any;
+  registeredUsers: any;
   server: any;
   branchesUrl: any;
   departmentsUrl: any;
@@ -45,6 +44,9 @@ constructor(private commonService: CommonService, private dataService:DataServic
   designationsUrl: any;
   registeredUsersUrl: any;
   saveEmployeesUrl: string;
+
+  constructor(private commonService: CommonService, private dataService: DataService) { }
+
 
   registerEmployee(myForm: FormGroup): void {
     this.commonService.create(this.employee, this.saveEmployeesUrl)
@@ -108,22 +110,22 @@ constructor(private commonService: CommonService, private dataService:DataServic
     this.dataService
       .getDatas(this.registeredUsersUrl)
       .subscribe((objects: Response) => {
-        this.registeredUsers = objects.json().objects
+        this.registeredUsers = objects.json().objects;
       }, err => console.log(err));
   }
 
 
   ngOnInit() {
     this.server = this.commonService.getServer();
-    this.branchesUrl = this.server+'branch';
-    this.departmentsUrl = this.server+'department';
-    this.subDepartmentsUrl = this.server+'sub_department';
-    this.gradesUrl = this.server+'grade';
-    this.modesUrl = this.server+'mode';
-    this.typesUrl = this.server+'type';
-    this.statusesUrl = this.server+'status';
-    this.designationsUrl = this.server+'designation';
-    this.registeredUsersUrl = this.server+'user';
+    this.branchesUrl = this.server + 'branch';
+    this.departmentsUrl = this.server + 'department';
+    this.subDepartmentsUrl = this.server + 'sub_department';
+    this.gradesUrl = this.server + 'grade';
+    this.modesUrl = this.server + 'mode';
+    this.typesUrl = this.server + 'type';
+    this.statusesUrl = this.server + 'status';
+    this.designationsUrl = this.server + 'designation';
+    this.registeredUsersUrl = this.server + 'user';
     this.saveEmployeesUrl = this.server + 'employee';
     this.getStatuses();
     this.getBranches();

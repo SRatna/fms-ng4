@@ -4,7 +4,7 @@ import { Response } from '@angular/http';
 import * as moment from 'moment';
 import { CommonService} from '../../../services/common.service'
 @Component({
-    templateUrl:'./dashboard.component.html'
+    templateUrl: './dashboard.component.html'
 })
 
 export class DashboardComponent implements OnInit{
