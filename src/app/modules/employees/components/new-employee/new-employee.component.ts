@@ -12,14 +12,15 @@ import {RegisteredUser} from '../../../registered-users/classes/registered-user'
 import {CommonService} from '../../../../services/common.service';
 import {DataService} from '../../../../services/data.service';
 import {Response} from '@angular/http';
+import {FormGroup, FormControl} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 import * as _ from 'underscore';
-import {FormGroup} from '@angular/forms';
 declare let jQuery : any;
 
 @Component({selector: 'app-new-employee', templateUrl: './new-employee.component.html', styleUrls: ['./new-employee.component.css']})
 export class NewEmployeeComponent implements OnInit,
 AfterViewInit {
-
+  myform : FormGroup;
   employee = new Employee();
   branches : any;
   departments : any;
@@ -42,15 +43,34 @@ AfterViewInit {
   registeredUsersUrl : any;
   employeesUrl : string;
   unregisteredUser : any;
-  constructor(private commonService : CommonService, private dataService : DataService) {}
+  employeeId : any;
+  constructor(private commonService : CommonService, private dataService : DataService, route : ActivatedRoute) {
+    this.employeeId = route.snapshot.params['id'];
+    console.log(this.employeeId);
+  }
 
-  registerEmployee(myForm : FormGroup) : void {
+  registerEmployee() : void {
     this
       .dataService
       .saveData(this.employeesUrl, this.employee)
       .subscribe(obj => {
-        myForm.reset();
+        this
+          .myform
+          .reset();
       }, error => console.log(error));
+  }
+  resetForm
+
+  getUnregisteredUser() {
+    this
+      .dataService
+      .getDatas(this.registeredUsersUrl)
+      .subscribe((objects : Response) => {
+        console.log(objects.json().objects);
+        this.unregisteredUser = objects
+          .json()
+          .objects;
+      })
   }
 
   getBranches() : void {
@@ -114,30 +134,42 @@ AfterViewInit {
       .subscribe((objects : Response) => this.designations = objects.json().objects, err => console.log(err));
   }
 
-  getRegisteredUsers() : void {
-    this
-      .dataService
-      .getDatas(this.registeredUsersUrl)
-      .subscribe((objects : Response) => {
-        this.unregisteredUser = [];
-        this.registeredUsers = objects
-          .json()
-          .objects;
-        this
-          .dataService
-          .getDatas(this.employeesUrl)
-          .subscribe((objects : Response) => {
-
-            this.unregisteredUser = _.filter(this.registeredUsers, (obj) => {
-              let pre = _.findWhere(objects.json().objects, {user_id: obj.id})
-              return !pre;
-            });
-          })
-
-      }, err => console.log(err));
-  }
-
   ngOnInit() {
+
+    this.myform = new FormGroup({
+      username: new FormControl(''),
+      first_name: new FormControl(''),
+      middle_name: new FormControl(''),
+      last_name: new FormControl(''),
+      email: new FormControl(''),
+      branch_id: new FormControl(''),
+      joined_e_date: new FormControl(''),
+      joined_n_date: new FormControl(''),
+      dob_e: new FormControl(''),
+      dob_n: new FormControl(''),
+      citizenship_no: new FormControl(''),
+      mobile_number: new FormControl(''),
+      t_country: new FormControl(''),
+      t_address: new FormControl(''),
+      t_street: new FormControl(''),
+      t_zone: new FormControl(''),
+      t_district: new FormControl(''),
+      p_country: new FormControl(''),
+      p_address: new FormControl(''),
+      p_street: new FormControl(''),
+      p_zone: new FormControl(''),
+      p_district: new FormControl(''),
+      user_id: new FormControl(''),
+      department_id: new FormControl(''),
+      sub_department_id: new FormControl(''),
+      designation_id: new FormControl(''),
+      mode_id: new FormControl(''),
+      status_id: new FormControl(''),
+      grade_id: new FormControl(''),
+      type_id: new FormControl(''),
+      gender: new FormControl('')
+    });
+
     this.server = this
       .commonService
       .getServer();
@@ -159,13 +191,19 @@ AfterViewInit {
     this.getSubDepartments();
     this.getTypes();
     this.getModes();
-    this.getRegisteredUsers();
+    this.getUnregisteredUser();
 
   }
 
-  ngAfterViewInit() {
-    console.log(jQuery(".date-picker"));
-    jQuery(".date-picker").nepaliDatePicker();
+  getUserDetail() {
+    this
+      .dataService
+      .getDataById(this.employeesUrl, this.employee.user_id)
+      .subscribe((response : Response) => {
+        console.log(response.json());
+      });
   }
+
+  ngAfterViewInit() {}
 
 }
