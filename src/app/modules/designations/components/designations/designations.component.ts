@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../../../services/common.service';
 import { Designation } from '../../classes/designation';
 import { FormGroup } from '@angular/forms';
+import { DataService } from '../../../../services/data.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-designations',
@@ -12,26 +14,19 @@ export class DesignationsComponent implements OnInit {
   duplicity: boolean;
   duplicityErrorMsg: string;
   designation = new Designation();
-  designations: Designation[];
-  private Url = 'http://localhost/advanced/api/web/v1/designations';
+  designations: any;
+  private Url: string;
 
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService, private dataService: DataService) { }
 
   save(myForm: FormGroup): void {
-    this.commonService.checkDuplicity(this.designation, this.Url).subscribe(obj => {
-        this.duplicity = obj.duplicity;
-        if (this.duplicity) {
-          this.duplicityErrorMsg = 'Sorry, name already exists.';
-        } else {
-          this.commonService.create(this.designation, this.Url)
-            .subscribe(obj => {
-              this.designations.push(obj);
-              myForm.reset();
-            }, error => console.log(error));
-        }
-      }, e => console.log(e)
-    );
+
+    this.dataService.saveData(this.Url, this.designation)
+      .subscribe((response: Response) => {
+        this.designations.push(response.json());
+      }, error => console.log(error))  ;
+
   }
 
   deleteDesignation(designation: Designation): void {
@@ -43,12 +38,15 @@ export class DesignationsComponent implements OnInit {
   }
 
   getDesignations(): void {
-    this.commonService
-      .getObjects(this.Url)
-      .subscribe(objects => this.designations = objects, err => console.log(err));
+    this.dataService
+      .getDatas(this.Url)
+      .subscribe((designations: Response) => {
+        this.designations = designations.json().objects;
+      }, err => console.log(err));
   }
 
   ngOnInit() {
+    this.Url = this.commonService.getServer() + 'designation';
     this.getDesignations();
   }
 
