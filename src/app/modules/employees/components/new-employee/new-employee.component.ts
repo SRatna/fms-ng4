@@ -123,6 +123,16 @@ AfterViewInit {
         this.registeredUsers = objects
           .json()
           .objects;
+        this
+          .dataService
+          .getDatas(this.employeesUrl)
+          .subscribe((objects : Response) => {
+
+            this.unregisteredUser = _.filter(this.registeredUsers, (obj) => {
+              let pre = _.findWhere(objects.json().objects, {user_id: obj.id})
+              return !pre;
+            });
+          })
 
       }, err => console.log(err));
   }
@@ -150,6 +160,7 @@ AfterViewInit {
     this.getTypes();
     this.getModes();
     this.getRegisteredUsers();
+
   }
 
   ngAfterViewInit() {

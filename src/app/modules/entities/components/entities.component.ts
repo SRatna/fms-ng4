@@ -27,7 +27,7 @@ export class EntitiesComponent implements OnInit {
     grade: new Grade(),
     mode: new Mode(),
     status: new Status(),
-    subDepartment: new SubDepartment(),
+    sub_department: new SubDepartment(),
     type: new Type()
 
   };
@@ -38,7 +38,7 @@ export class EntitiesComponent implements OnInit {
     grade: 'Grade',
     mode: 'Mode',
     status: 'Status',
-    subDepartment: 'Sub Department',
+    sub_department: 'Sub Department',
     type: 'Type'
   }
 

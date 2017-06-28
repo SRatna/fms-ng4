@@ -41,17 +41,17 @@
                     <div class="row">
                       <div class="form-group col-md-4">
                       <label for="" class="control-label"></label>
-                        <input type="text"  placeholder="User Name" class="form-control" [(ngModel)]="employee.username" name="username">
+                        <input type="text"  placeholder="User Name" class="form-control" [(ngModel)]="employee.username" name="username"/>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Registered User</label>
-                          <select name="reg_id" [(ngModel)]="employee.reg_id" id="" class="form-control">
-                            <option *ngFor="let obj of registeredUsers" [value]="obj.id">{{obj.name}}<span *ngIf="obj.name == ''">{{obj.id}}</span></option>
+                          <select name="user_id" [(ngModel)]="employee.user_id" id="" class="form-control" #username>
+                            <option *ngFor="let obj of unregisteredUser" [value]="obj.id">{{obj.name}}<span *ngIf="obj.name == ''">{{obj.id}}</span></option>
                           </select>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Registered User Id</label>
-                          <input class="form-control" placeholder="Registered User Id" disabled [value]="employee.reg_id == undefined ? null : employee.reg_id">
+                          <input class="form-control" placeholder="Registered User Id" disabled [value]="employee.user_id == undefined ? null : employee.user_id">
                       </div>
                     </div>
                     <br>
