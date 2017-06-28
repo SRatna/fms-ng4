@@ -6,8 +6,25 @@
 
 // Sidebar
 $(function () {
+<<<<<<< HEAD
   $('#sidebar-menu li ul').slideUp();
   $('#sidebar-menu li').removeClass('active');
+=======
+    $('#sidebar-menu li ul').slideUp();
+    $('#sidebar-menu li').removeClass('active');
+
+    $('.parent-menu').on('click', function() {
+        if ($(this).parent().is('.active')) {
+            $(this).parent().removeClass('active');
+            $(this).siblings().slideUp();
+        } else {
+                $('#sidebar-menu li').removeClass('active');
+                $('#sidebar-menu li ul').slideUp();
+                $(this).parent().addClass('active');
+                $(this).siblings().slideDown();
+             }
+    });
+>>>>>>> 84624354780a7a6db8e7ae8fd645cf38c0291d2c
 
   $('.parent-menu').on('click', function() {
     if ($(this).parent().is('.active')) {

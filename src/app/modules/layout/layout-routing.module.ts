@@ -14,6 +14,8 @@ import { DesignationsComponent } from '../designations/components/designations/d
 import { ProjectsComponent } from '../projects/components/projects/projects.component';
 import { EmployeeAttendence } from '../employees/components/employee-attendence/employee-attendence.component';
 import { NewEmployeeComponent } from '../employees/components/new-employee/new-employee.component';
+import { EntitiesComponent } from '../entities/components/entities.component';
+
 const appRoutes: Routes = [
   {
     path: 'fms',
@@ -28,44 +30,8 @@ const appRoutes: Routes = [
         component:NewEmployeeComponent
       },
       {
-        path: 'branch',
-        component: BranchComponent
-      },
-      {
-        path: 'category',
-        component: CategoriesComponent
-      },
-      {
-        path: 'department',
-        component: DepartmentComponent
-      },
-      {
-        path: 'sub-department',
-        component: SubDepartmentComponent
-      },
-      {
-        path: 'status',
-        component: StatusesComponent
-      },
-      {
-        path: 'type',
-        component: TypesComponent
-      },
-      {
-        path: 'mode',
-        component: ModesComponent
-      },
-      {
-        path: 'grade',
-        component: GradesComponent
-      },
-      {
-        path: 'designation',
-        component: DesignationsComponent
-      },
-      {
-        path: 'project',
-        component: ProjectsComponent
+        path: 'entities',
+        component: EntitiesComponent
       },
       {
         path: 'employee-attendence',

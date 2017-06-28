@@ -22,14 +22,16 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
-        "styles.css"
+        "styles.css",
+        "./assets/datepicker/nepali.datepicker.v2.2.min.css"
       ],
 
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "./assets/js/custom.js",
-        "../node_modules/moment/min/moment.min.js"
+        "../node_modules/moment/min/moment.min.js",
+        "./assets/datepicker/nepali.datepicker.v2.2.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

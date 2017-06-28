@@ -1,122 +1,146 @@
-import { Component, OnInit } from '@angular/core';
-import { Employee } from '../../classes/employee';
-import { Branch } from '../../../branches/classes/branch';
-import { Department } from '../../../departments/classes/department';
-import { SubDepartment } from '../../../sub-departments/classes/sub-department';
-import { Grade } from '../../../grades/classes/grade';
-import { Mode } from '../../../modes/classes/mode';
-import { Type } from '../../../types/classes/type';
-import { Status } from '../../../statuses/classes/status';
-import { Designation } from '../../../designations/classes/designation';
-import { RegisteredUser } from '../../../registered-users/classes/registered-user';
-import { CommonService } from '../../../../services/common.service';
-import { DataService } from '../../../../services/data.service';
-import { Response } from '@angular/http';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Employee} from '../../classes/employee';
+import {Branch} from '../../../branches/classes/branch';
+import {Department} from '../../../departments/classes/department';
+import {SubDepartment} from '../../../sub-departments/classes/sub-department';
+import {Grade} from '../../../grades/classes/grade';
+import {Mode} from '../../../modes/classes/mode';
+import {Type} from '../../../types/classes/type';
+import {Status} from '../../../statuses/classes/status';
+import {Designation} from '../../../designations/classes/designation';
+import {RegisteredUser} from '../../../registered-users/classes/registered-user';
+import {CommonService} from '../../../../services/common.service';
+import {DataService} from '../../../../services/data.service';
+import {Response} from '@angular/http';
 import * as _ from 'underscore';
-import { FormGroup } from '@angular/forms';
+import {FormGroup} from '@angular/forms';
+declare let jQuery : any;
 
-@Component({
-  selector: 'app-new-employee',
-  templateUrl: './new-employee.component.html',
-  styleUrls: ['./new-employee.component.css']
-})
-export class NewEmployeeComponent implements OnInit {
+@Component({selector: 'app-new-employee', templateUrl: './new-employee.component.html', styleUrls: ['./new-employee.component.css']})
+export class NewEmployeeComponent implements OnInit,
+AfterViewInit {
 
   employee = new Employee();
-  employees: Employee[] = [];
-  branches: any;
-  departments: any;
-  subDepartments: any;
-  grades: any;
-  modes: any;
-  types: any;
-  statuses: any;
-  designations: any;
-  registeredUsers: any;
-  server: any;
-  branchesUrl: any;
-  departmentsUrl: any;
-  subDepartmentsUrl: any;
-  gradesUrl: any;
-  modesUrl: any;
-  typesUrl: any;
-  statusesUrl: any;
-  designationsUrl: any;
-  registeredUsersUrl: any;
-  saveEmployeesUrl: string;
+  branches : any;
+  departments : any;
+  subDepartments : any;
+  grades : any;
+  modes : any;
+  types : any;
+  statuses : any;
+  designations : any;
+  registeredUsers : any;
+  server : any;
+  branchesUrl : any;
+  departmentsUrl : any;
+  subDepartmentsUrl : any;
+  gradesUrl : any;
+  modesUrl : any;
+  typesUrl : any;
+  statusesUrl : any;
+  designationsUrl : any;
+  registeredUsersUrl : any;
+  employeesUrl : string;
+  unregisteredUser : any;
+  constructor(private commonService : CommonService, private dataService : DataService) {}
 
-  constructor(private commonService: CommonService, private dataService: DataService) { }
-
-
-  registerEmployee(myForm: FormGroup): void {
-    this.commonService.create(this.employee, this.saveEmployeesUrl)
+  registerEmployee(myForm : FormGroup) : void {
+    this
+      .dataService
+      .saveData(this.employeesUrl, this.employee)
       .subscribe(obj => {
         myForm.reset();
       }, error => console.log(error));
   }
 
-  getBranches(): void {
-    this.dataService
+  getBranches() : void {
+    this
+      .dataService
       .getDatas(this.branchesUrl)
-      .subscribe((objects: Response) => {
-        this.branches = objects.json().objects;
+      .subscribe((objects : Response) => {
+        this.branches = objects
+          .json()
+          .objects;
       }, err => console.log(err));
   }
 
-  getDepartments(): void {
-    this.dataService
+  getDepartments() : void {
+    this
+      .dataService
       .getDatas(this.departmentsUrl)
       .subscribe(objects => this.departments = objects.json().objects, err => console.log(err));
   }
 
-  getSubDepartments(): void {
-    this.dataService
+  getSubDepartments() : void {
+    this
+      .dataService
       .getDatas(this.subDepartmentsUrl)
-      .subscribe((objects: Response) => this.subDepartments = objects.json().objects, err => console.log(err));
+      .subscribe((objects : Response) => this.subDepartments = objects.json().objects, err => console.log(err));
   }
 
-  getGrades(): void {
-    this.dataService
+  getGrades() : void {
+    this
+      .dataService
       .getDatas(this.gradesUrl)
-      .subscribe((objects: Response) => this.grades = objects.json().objects, err => console.log(err));
+      .subscribe((objects : Response) => this.grades = objects.json().objects, err => console.log(err));
   }
 
-  getModes(): void {
-    this.dataService
+  getModes() : void {
+    this
+      .dataService
       .getDatas(this.modesUrl)
-      .subscribe((objects: Response) => this.modes = objects.json().objects, err => console.log(err));
+      .subscribe((objects : Response) => this.modes = objects.json().objects, err => console.log(err));
   }
 
-  getTypes(): void {
-    this.dataService
+  getTypes() : void {
+    this
+      .dataService
       .getDatas(this.typesUrl)
-      .subscribe((objects: Response) => this.types = objects.json().objects, err => console.log(err));
+      .subscribe((objects : Response) => this.types = objects.json().objects, err => console.log(err));
   }
 
-  getStatuses(): void {
+  getStatuses() : void {
     console.log(this.statusesUrl);
-    this.dataService
+    this
+      .dataService
       .getDatas(this.statusesUrl)
-      .subscribe((objects: Response) => this.statuses = objects.json().objects, err => console.log(err));
+      .subscribe((objects : Response) => this.statuses = objects.json().objects, err => console.log(err));
   }
 
-  getDesignations(): void {
-    this.dataService
+  getDesignations() : void {
+    this
+      .dataService
       .getDatas(this.designationsUrl)
-      .subscribe((objects: Response) => this.designations = objects.json().objects, err => console.log(err));
+      .subscribe((objects : Response) => this.designations = objects.json().objects, err => console.log(err));
   }
 
-  getRegisteredUsers(): void {
-    this.dataService
+  getRegisteredUsers() : void {
+    this
+      .dataService
       .getDatas(this.registeredUsersUrl)
-      .subscribe((objects: Response) => {
-        this.registeredUsers = objects.json().objects;
+      .subscribe((objects : Response) => {
+        this.unregisteredUser = [];
+        this.registeredUsers = objects
+          .json()
+          .objects;
+        this
+          .dataService
+          .getDatas(this.employeesUrl)
+          .subscribe((objects : Response) => {
+
+            this.unregisteredUser = _.filter(this.registeredUsers, (obj) => {
+              let pre = _.findWhere(objects.json().objects, {user_id: obj.id})
+              return !pre;
+            });
+          })
+
       }, err => console.log(err));
   }
 
-
   ngOnInit() {
-    this.server = this.commonService.getServer();
+    this.server = this
+      .commonService
+      .getServer();
     this.branchesUrl = this.server + 'branch';
     this.departmentsUrl = this.server + 'department';
     this.subDepartmentsUrl = this.server + 'sub_department';
@@ -126,7 +150,7 @@ export class NewEmployeeComponent implements OnInit {
     this.statusesUrl = this.server + 'status';
     this.designationsUrl = this.server + 'designation';
     this.registeredUsersUrl = this.server + 'user';
-    this.saveEmployeesUrl = this.server + 'employee';
+    this.employeesUrl = this.server + 'employee';
     this.getStatuses();
     this.getBranches();
     this.getGrades();
@@ -136,6 +160,12 @@ export class NewEmployeeComponent implements OnInit {
     this.getTypes();
     this.getModes();
     this.getRegisteredUsers();
+
+  }
+
+  ngAfterViewInit() {
+    console.log(jQuery(".date-picker"));
+    jQuery(".date-picker").nepaliDatePicker();
   }
 
 }
