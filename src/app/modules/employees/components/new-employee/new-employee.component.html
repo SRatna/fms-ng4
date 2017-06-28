@@ -37,15 +37,15 @@
                 </div>
                 <div class="x_content">
                   <br>
-                  <form #employeeForm='ngForm' (ngSubmit)="registerEmployee()" id="demo-form2"data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                  <form  [formGroup]= "myform" (ngSubmit)="registerEmployee()" id="demo-form2"data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
                     <div class="row">
                       <div class="form-group col-md-4">
                       <label for="" class="control-label"></label>
-                        <input type="text"  placeholder="User Name" class="form-control" [(ngModel)]="employee.username" name="username"/>
+                        <input type="text"  placeholder="User Name" class="form-control" [(ngModel)]="employee.username" formControlName="username"/>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Registered User</label>
-                          <select name="user_id" [(ngModel)]="employee.user_id" id="" class="form-control" #username>
+                          <select formControlName="user_id" [(ngModel)]="employee.user_id" id="" class="form-control" (change)="getUserDetail()">
                             <option *ngFor="let obj of unregisteredUser" [value]="obj.id">{{obj.name}}<span *ngIf="obj.name == ''">{{obj.id}}</span></option>
                           </select>
                     </div>
@@ -61,7 +61,7 @@
                       <div class="form-group col-md-4">
                       <label for="" class="control-label">Branch</label>
 
-                        <select name="branch_id" id="" class="form-control" [(ngModel)]="employee.branch_id">
+                        <select formControlName="branch_id" id="" class="form-control" [(ngModel)]="employee.branch_id">
                           <option *ngFor="let branch of branches" [value]="branch.id">{{branch.name}}</option>
                         </select>
 
@@ -69,15 +69,15 @@
                     <div class="form-group col-md-4">
                         <label for="" class="control-label">Department</label>
 
-                        <select name="department._id" id="" class="form-control" [(ngModel)]="employee.department_id">
-                          <option *ngFor="let department of departments" value="department.id"> {{department.name}} </option>
+                        <select formControlName="department_id" id="" class="form-control" [(ngModel)]="employee.department_id">
+                          <option *ngFor="let department of departments" [value]="department.id"> {{department.name}} </option>
                         </select>
 
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Sub Department</label>
 
-                        <select name="sub_department_id" id="" class="form-control" [(ngModel)]="employee.sub_department_id">
+                        <select formControlName="sub_department_id" id="" class="form-control" [(ngModel)]="employee.sub_department_id">
                           <option *ngFor="let item of subDepartments" [value]="item.id">{{item.name}}</option>
                         </select>
 
@@ -86,7 +86,7 @@
                     <div class="row">
                        <div class="form-group col-md-3">
                       <label for="" class="control-label">Mode</label>
-                        <select name="mode_id" id="" class="form-control" [(ngModel)]="employee.mode_id">
+                        <select formControlName="mode_id" id="" class="form-control" [(ngModel)]="employee.mode_id">
                           <option *ngFor="let item of modes" [value]="item.id">{{item.name}}</option>
                         </select>
 
@@ -94,20 +94,20 @@
                     <div class="form-group col-md-3">
                       <label for="" class="control-label">Status</label>
 
-                        <select name="mode_id" id="" class="form-control" [(ngModel)]="employee.status_id">
-                          <option *ngFor="let item of status" [value]="item.id">{{item.name}}</option>
+                        <select formControlName="mode_id" id="" class="form-control" [(ngModel)]="employee.status_id">
+                          <option *ngFor="let item of statuses" [value]="item.id">{{item.name}}</option>
                         </select>
 
                     </div>
                     <div class="form-group col-md-3">
                       <label for="" class="control-label">Type</label>
-                        <select name="type_id" id="" class="form-control" [(ngModel)]="employee.type_id">
+                        <select formControlName="type_id" id="" class="form-control" [(ngModel)]="employee.type_id">
                           <option *ngFor="let item of types" [value]="item.id">{{item.name}}</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                       <label for="" class="control-label">Grade</label>
-                        <select name="grade_id" id="" class="form-control" [(ngModel)]="employee.grade_id">
+                        <select formControlName="grade_id" id="" class="form-control" [(ngModel)]="employee.grade_id">
                           <option *ngFor="let item of grades" [value]="item.id">{{item.name}}</option>
                         </select>
                     </div>
@@ -115,18 +115,18 @@
                     <div class="row">
                       <div class="form-group col-md-4">
                     <label for="" class="control-label">Designation</label>
-                        <select name="designation_id" id="" class="form-control" [(ngModel)]="employee.designation_id">
+                        <select formControlName="designation_id" id="" class="form-control" [(ngModel)]="employee.designation_id">
                           <option *ngFor="let item of designations" [value]="item.id">{{item.name}}</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
 
                       <label for="" class="control-label">Nepali Joined Date</label>
-                        <input type="text"  placeholder="Nepali Joined Date" class="form-control date-picker" [(ngModel)]="employee.joined_n_date" name="joined_n_date">
+                        <input type="date"  placeholder="Nepali Joined Date" class="form-control date-picker" [(ngModel)]="employee.joined_n_date" formControlName="joined_n_date">
                     </div>
                     <div class="form-group col-md-4">
                      <label for="" class="control-label">English Joined Date</label>
-                        <input type="date"  placeholder="English Joined Date" class="form-control" [(ngModel)]="employee.joined_e_date" name="joined_e_date">
+                        <input type="date"  placeholder="English Joined Date" class="form-control" [(ngModel)]="employee.joined_e_date" formControlName="joined_e_date">
                     </div>
                     </div>
                     <br>
@@ -135,31 +135,31 @@
                     <div class="row">
                       <div class="form-group col-md-4">
                       <label for="" class="control-label">First Name</label>
-                        <input type="text"  placeholder="First Name" class="form-control" [(ngModel)]="employee.first_name" name="first_name">
+                        <input type="text"  placeholder="First Name" class="form-control" [(ngModel)]="employee.first_name" formControlName="first_name">
                     </div>
                     <div class="form-group col-md-4">
                        <label for="" class="control-label">Middle Name</label>
-                        <input type="text"  placeholder="Middle Name" class="form-control" [(ngModel)]="employee.middle_name" name="middle_name">
+                        <input type="text"  placeholder="Middle Name" class="form-control" [(ngModel)]="employee.middle_name" formControlName="middle_name">
                     </div>
                     <div class="form-group col-md-4">
                        <label for="" class="control-label">Last Name</label>
-                        <input type="text"  placeholder="Last Name" class="form-control" [(ngModel)]="employee.last_name" name="last_name">
+                        <input type="text"  placeholder="Last Name" class="form-control" [(ngModel)]="employee.last_name" formControlName="last_name">
                     </div>
                     </div>
                     <div class="row">
                        <div class="form-group col-md-4">
                        <label for="" class="control-label">Date of Birth in Nepali</label>
-                        <input type="text"  placeholder="Date of Birth" class="form-control" [(ngModel)]="employee.dob_n" name="dob_n">
+                        <input type="date"  placeholder="Date of Birth" class="form-control" [(ngModel)]="employee.dob_n" formControlName="dob_n">
 
                     </div>
                     <div class="form-group col-md-4">
                      <label for="" class="control-label">Date of Birth in English</label>
-                        <input type="text"  placeholder="Date of Birth" class="form-control" [(ngModel)]="employee.dob_e" name="dob_e">
+                        <input type="date"  placeholder="Date of Birth" class="form-control" [(ngModel)]="employee.dob_e" formControlName="dob_e">
                       </div>
 
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Gender</label>
-                        <select name="gender" id="" class="form-control" [(ngModel)]="employee.gender">
+                        <select formControlName="gender" id="" class="form-control" [(ngModel)]="employee.gender">
                           <option value="male">Male</option>
                           <option value="female">Female</option>
                           <option value="others">Others</option>
@@ -170,13 +170,16 @@
                     <div class="row">
                    <div class="form-group col-md-4">
                      <label for="" class="control-label">Email</label>
-                        <input type="text"  placeholder="Email" class="form-control" [(ngModel)]="employee.email" name="email">
+                        <input type="text"  placeholder="Email" class="form-control" [(ngModel)]="employee.email" formControlName="email">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Citizenship No</label>
-                        <input type="text"  placeholder="Citizenship No" class="form-control" [(ngModel)]="employee.citizenship_no" name="citizenship_no">
+                        <input type="text"  placeholder="Citizenship No" class="form-control" [(ngModel)]="employee.citizenship_no" formControlName="citizenship_no">
                     </div>
-
+                    <div class="form-group col-md-4">
+                      <label for="" class="control-label">Mobile No</label>
+                        <input type="number"  placeholder="Mobile No" class="form-control" [(ngModel)]="employee.mobile_number" formControlName="mobile_number">
+                    </div>
                     </div>
                     <br>
                     <h4>Temporary Address</h4>
@@ -184,25 +187,25 @@
                     <div class="row">
                       <div class="form-group col-md-4">
                       <label for="" class="control-label">Temporary Country</label>
-                        <input type="text"  placeholder="Temporary Country" class="form-control" [(ngModel)]="employee.t_country" name="t_country">
+                        <input type="text"  placeholder="Temporary Country" class="form-control" [(ngModel)]="employee.t_country" formControlName="t_country">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Temporary Zone</label>
-                        <input type="text"  placeholder="Temporary Zone" class="form-control" [(ngModel)]="employee.t_zone" name="t_zone">
+                        <input type="text"  placeholder="Temporary Zone" class="form-control" [(ngModel)]="employee.t_zone" formControlName="t_zone">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Temporary Address</label>
-                        <input type="text"  placeholder="Temporary Address" class="form-control" [(ngModel)]="employee.t_address" name="t_address">
+                        <input type="text"  placeholder="Temporary Address" class="form-control" [(ngModel)]="employee.t_address" formControlName="t_address">
                     </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-md-4">
                        <label for="" class="control-label">Temporary District</label>
-                        <input type="text"  placeholder="Temporary District" class="form-control" [(ngModel)]="employee.t_district" name="t_district">
+                        <input type="text"  placeholder="Temporary District" class="form-control" [(ngModel)]="employee.t_district" formControlName="t_district">
                       </div>
                     <div class="form-group col-md-4">
                      <label for="" class="control-label">Temporary Street</label>
-                        <input type="text"  placeholder="Temporary Street" class="form-control" [(ngModel)]="employee.t_street" name="t_street">
+                        <input type="text"  placeholder="Temporary Street" class="form-control" [(ngModel)]="employee.t_street" formControlName="t_street">
                       </div>
                     </div>
                     <br>
@@ -211,25 +214,25 @@
                     <div class="row">
                       <div class="form-group col-md-4">
                       <label for="" class="control-label">Permanent Country</label>
-                        <input type="text"  placeholder="Permanent Country" class="form-control" [(ngModel)]="employee.p_country" name="p_country">
+                        <input type="text"  placeholder="Permanent Country" class="form-control" [(ngModel)]="employee.p_country" formControlName="p_country">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Permanent Zone</label>
-                        <input type="text"  placeholder="Permanent Zone" class="form-control" [(ngModel)]="employee.p_zone" name="p_zone">
+                        <input type="text"  placeholder="Permanent Zone" class="form-control" [(ngModel)]="employee.p_zone" formControlName="p_zone">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="" class="control-label">Permanent Address</label>
-                        <input type="text"  placeholder="Permanent Address" class="form-control" [(ngModel)]="employee.p_address" name="p_address">
+                        <input type="text"  placeholder="Permanent Address" class="form-control" [(ngModel)]="employee.p_address" formControlName="p_address">
                     </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-md-4">
                        <label for="" class="control-label">Permanent District</label>
-                        <input type="text"  placeholder="Permanent District" class="form-control" [(ngModel)]="employee.p_district" name="p_district">
+                        <input type="text"  placeholder="Permanent District" class="form-control" [(ngModel)]="employee.p_district" formControlName="p_district">
                       </div>
                     <div class="form-group col-md-4">
                      <label for="" class="control-label">Permanent Street</label>
-                        <input type="text"  placeholder="Permanent Street" class="form-control" [(ngModel)]="employee.p_street" name="p_street">
+                        <input type="text"  placeholder="Permanent Street" class="form-control" [(ngModel)]="employee.p_street" formControlName="p_street">
                     </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
