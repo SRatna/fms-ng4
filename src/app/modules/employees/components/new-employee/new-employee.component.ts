@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Employee } from '../../classes/employee';
 import { Branch } from '../../../branches/classes/branch';
 import { Department } from '../../../departments/classes/department';
@@ -14,16 +14,15 @@ import { DataService } from '../../../../services/data.service';
 import { Response } from '@angular/http';
 import * as _ from 'underscore';
 import { FormGroup } from '@angular/forms';
-
+declare let jQuery: any;
 @Component({
   selector: 'app-new-employee',
   templateUrl: './new-employee.component.html',
   styleUrls: ['./new-employee.component.css']
 })
-export class NewEmployeeComponent implements OnInit {
+export class NewEmployeeComponent implements OnInit,AfterViewInit {
 
   employee = new Employee();
-  employees: Employee[] = [];
   branches: any;
   departments: any;
   subDepartments: any;
@@ -49,7 +48,7 @@ export class NewEmployeeComponent implements OnInit {
 
 
   registerEmployee(myForm: FormGroup): void {
-    this.commonService.create(this.employee, this.saveEmployeesUrl)
+    this.dataService.saveData(this.saveEmployeesUrl, this.employee)
       .subscribe(obj => {
         myForm.reset();
       }, error => console.log(error));
@@ -136,6 +135,11 @@ export class NewEmployeeComponent implements OnInit {
     this.getTypes();
     this.getModes();
     this.getRegisteredUsers();
+  }
+
+  ngAfterViewInit() {
+    console.log(jQuery(".date-picker"));
+    jQuery(".date-picker").nepaliDatePicker();
   }
 
 }

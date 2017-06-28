@@ -42,7 +42,7 @@ export class EntitiesComponent implements OnInit {
       grade: 'Grade',
       mode: 'Mode',
       status: 'Status',
-      subDepartment: 'SubDepartment',
+      subDepartment: 'Sub Department',
       type: 'Type'
  }
 
