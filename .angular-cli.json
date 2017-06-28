@@ -34,20 +34,7 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "./assets/js/custom.js",
-        "../node_modules/moment/min/moment.min.js",
-        "./assets/js/buttons.bootstap.min.js",
-        "./assets/js/buttons.html5.min.js",
-        "./assets/js/buttons.print.min.js",
-        "./assets/js/dataTables.bootstrap.js",
-        "./assets/js/dataTables.buttons.min.js",
-        "./assets/js/dataTables.fixedHeader.min.js",
-        "./assets/js/dataTables.keyTable.min.js",
-        "./assets/js/dataTables.scroller.min.js",
-        "./assets/js/dataTables.responsive.min.js",
-        "./assets/js/jquery.dataTables.min.js",
-        "./assets/js/jszip.min.js",
-        "./assets/js/pdfmake.min.js",
-        "./assets/js/responsive.bootstrap.min.js"
+        "../node_modules/moment/min/moment.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

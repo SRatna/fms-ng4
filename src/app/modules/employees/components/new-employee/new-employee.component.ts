@@ -13,6 +13,7 @@ import {CommonService} from '../../../../services/common.service';
 import {DataService} from '../../../../services/data.service';
 import {Response} from '@angular/http';
 import {FormGroup, FormControl} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 import * as _ from 'underscore';
 declare let jQuery : any;
 
@@ -42,7 +43,11 @@ AfterViewInit {
   registeredUsersUrl : any;
   employeesUrl : string;
   unregisteredUser : any;
-  constructor(private commonService : CommonService, private dataService : DataService) {}
+  employeeId : any;
+  constructor(private commonService : CommonService, private dataService : DataService, route : ActivatedRoute) {
+    this.employeeId = route.snapshot.params['id'];
+    console.log(this.employeeId);
+  }
 
   registerEmployee() : void {
     this
