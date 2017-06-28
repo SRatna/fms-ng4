@@ -1,0 +1,41 @@
+<md-toolbar color="primary">
+  Designations
+</md-toolbar>
+<style>
+  div{
+    position: absolute;
+    left:0px;
+    padding:16px;
+    top: 0px;
+  }
+</style>
+
+<md-grid-list cols="2">
+  <md-grid-tile>
+    <div style="width:70%; ">
+      <form #myForm="ngForm">
+        <md-input-container style="width:100%;">
+          <input mdInput placeholder="Designation name" name="name" [(ngModel)]="designation.name">
+        </md-input-container>
+        <p class="duplicate-error-msg">{{duplicity?duplicityErrorMsg:null}}</p>
+        <button md-raised-button color="primary" type="submit" (click)="save(myForm);" >Save</button>
+      </form>
+
+    </div>
+  </md-grid-tile>
+  <md-grid-tile>
+    <div style="width: 70%; height:80%;">
+      <md-card style="width: 100%; height: calc(100vh - 200px); overflow-y:auto;">
+        <h2>Designations List</h2>
+        <hr>
+        <md-list>
+          <md-list-item *ngFor="let designation of designations">
+            <!--<md-icon md-list-icon>delete</md-icon>-->
+            <h3 md-line> {{designation.name}} </h3>
+            <button md-raised-button color="primary" (click)="deleteDesignation(designation)" >Delete</button>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </md-grid-tile>
+</md-grid-list>
