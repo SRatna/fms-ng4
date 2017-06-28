@@ -15,6 +15,7 @@ import { ProjectsComponent } from '../projects/components/projects/projects.comp
 import { EmployeeAttendence } from '../employees/components/employee-attendence/employee-attendence.component';
 import { NewEmployeeComponent } from '../employees/components/new-employee/new-employee.component';
 import { EntitiesComponent } from '../entities/components/entities.component';
+import { EmployeesComponent } from '../employees/components/employees/employees.component';
 
 const appRoutes: Routes = [
   {
@@ -26,8 +27,12 @@ const appRoutes: Routes = [
         component: DashboardComponent
       },
       {
+        path: 'employees',
+        component: EmployeesComponent
+      },
+      {
         path: 'register-employee',
-        component:NewEmployeeComponent
+        component: NewEmployeeComponent
       },
       {
         path: 'entities',
