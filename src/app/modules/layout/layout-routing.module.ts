@@ -40,8 +40,6 @@ const appRoutes : Routes = [
       }, {
         path: 'employee-attendence',
         component: EmployeeAttendence
-      }, {
-        path: ''
       }
 
     ]
