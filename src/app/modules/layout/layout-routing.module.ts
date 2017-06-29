@@ -12,7 +12,7 @@ import {ModesComponent} from '../modes/components/modes/modes.component';
 import {GradesComponent} from '../grades/components/grades/grades.component';
 import {DesignationsComponent} from '../designations/components/designations/designations.component';
 import {ProjectsComponent} from '../projects/components/projects/projects.component';
-import {EmployeeAttendence} from '../employees/components/employee-attendence/employee-attendence.component';
+import {EmployeeAttendenceComponent} from '../employees/components/employee-attendence/employee-attendence.component';
 import {NewEmployeeComponent} from '../employees/components/new-employee/new-employee.component';
 import {EntitiesComponent} from '../entities/components/entities.component';
 import {EmployeesComponent} from '../employees/components/employees/employees.component';
@@ -40,7 +40,7 @@ const appRoutes : Routes = [
         component: EntitiesComponent
       }, {
         path: 'employee-attendence',
-        component: EmployeeAttendence
+        component: EmployeeAttendenceComponent
       }
 
     ]

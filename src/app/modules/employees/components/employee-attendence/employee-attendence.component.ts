@@ -6,16 +6,16 @@ import { Response } from '@angular/http';
     templateUrl: './employee-attendence.component.html',
 })
 
-export class EmployeeAttendence implements OnInit{
+export class EmployeeAttendenceComponent implements OnInit {
 
-    attendence: any;
+    attendence: any[] = [];
     attendenceUrl: string;
     users: any;
     user_id: number;
     from: any;
     to: any;
 
-    constructor(private dataService:DataService, private commonService:CommonService) {}
+    constructor(private dataService: DataService, private commonService: CommonService) {}
 
     ngOnInit() {
         this.attendenceUrl = this.commonService.getServer() + 'attendance';
@@ -23,18 +23,18 @@ export class EmployeeAttendence implements OnInit{
     }
 
     getRegisteredUser() {
-        var url = this.commonService.getServer() + 'user';
+        const url = this.commonService.getServer() + 'user';
         this.dataService.getDatas(url).subscribe((response: Response) => {
             this.users = response.json().objects;
 
-        })
+        });
     }
     getUserAttendence() {
-        console.log(this.user_id,this.from);
-        this.dataService.getDataByDateRange(this.attendenceUrl, { user_id: this.user_id, start_date: this.from, end_date: this.to }).subscribe((response: Response) => {
+        this.dataService.getDataByDateRange(this.attendenceUrl, { user_id: this.user_id, start_date: this.from, end_date: this.to })
+          .subscribe((response: Response) => {
             this.attendence = response.json();
         },
-        error=>console.log(error))
+        error => console.log(error));
     }
 
 
