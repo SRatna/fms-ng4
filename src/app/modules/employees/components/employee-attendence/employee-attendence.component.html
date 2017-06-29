@@ -9,30 +9,27 @@
         <br>
         <form class="form-horizontal form-label-left" (ngSubmit) = "getUserAttendence()">
           <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
               <label for="" class="control-label">Registered user:</label>
               <select name="user_id" id="" class="form-control" [(ngModel)]="user_id">
                 <option *ngFor="let user of users" [value]="user.id">{{user.name}}<span *ngIf="user.name==''">{{user.id}}</span></option>
               </select>
             </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
               <label for="" class="control-label">From:</label>
               <input type="date" name="from" class="form-control" [(ngModel)]="from">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
               <label for="" class="control-label">To:</label>
               <input type="date" name="to" class="form-control" [(ngModel)]="to">
             </div>
           </div>
 
-
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-9 col-md-offset-3">
               <button type="submit" class="btn btn-primary">Reset</button>
-              <button type="submit"  class="btn btn-success">Submit</button>
+              <button type="submit"  class="btn btn-success">Find</button>
             </div>
           </div>
         </form>
@@ -52,7 +49,7 @@
           </thead>
 
           <tbody>
-          <tr class="even pointer" *ngFor="let obj of attendence" [style.background-color]="obj.day == 'Saturday' ? '#E6B0AA' : ''" >
+          <tr *ngFor="let obj of attendence" [style.background-color]="obj.day == 'Saturday' ? '#E6B0AA' : ''" >
             <td class=" ">{{obj.date}}</td>
             <td class=" ">{{obj.day}}</td>
             <td class=" ">{{obj.check_in}}</td>
@@ -60,6 +57,15 @@
             <td class=" ">{{obj.worked_time}}</td>
             <td class="">{{obj.remarks}}</td>
             <td class="">{{obj.status}}</td>
+          </tr>
+          <tr style="background-color: #2C4257; color:white;">
+            <td>Total Worked Time</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{total_worked_time}}</td>
+            <td></td>
+            <td></td>
           </tr>
           </tbody>
         </table>

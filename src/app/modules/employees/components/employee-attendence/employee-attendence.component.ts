@@ -14,6 +14,7 @@ export class EmployeeAttendenceComponent implements OnInit {
     user_id: number;
     from: any;
     to: any;
+    total_worked_time: any;
 
     constructor(private dataService: DataService, private commonService: CommonService) {}
 
@@ -32,7 +33,9 @@ export class EmployeeAttendenceComponent implements OnInit {
     getUserAttendence() {
         this.dataService.getDataByDateRange(this.attendenceUrl, { user_id: this.user_id, start_date: this.from, end_date: this.to })
           .subscribe((response: Response) => {
-            this.attendence = response.json();
+            const result = response.json();
+            this.attendence = result[0]['attendance_records'];
+            this.total_worked_time = result[0]['total_worked_time'];
         },
         error => console.log(error));
     }
