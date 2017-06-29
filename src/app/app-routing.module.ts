@@ -7,7 +7,6 @@ import { LayoutComponent } from "./modules/layout/components/layout.component";
 const appRoutes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
     redirectTo: '/fms',
     pathMatch:'full'
   },
