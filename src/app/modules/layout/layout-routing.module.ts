@@ -16,11 +16,12 @@ import {EmployeeAttendence} from '../employees/components/employee-attendence/em
 import {NewEmployeeComponent} from '../employees/components/new-employee/new-employee.component';
 import {EntitiesComponent} from '../entities/components/entities.component';
 import {EmployeesComponent} from '../employees/components/employees/employees.component';
-
+import { AuthGuard } from '../../services/auth-guard.service';
 const appRoutes : Routes = [
   {
     path: 'fms',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
