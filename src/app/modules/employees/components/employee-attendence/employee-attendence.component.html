@@ -1,63 +1,31 @@
-<div class="page-title">
-  <div class="title_left">
-    <h3>
-      Attendence Record
-    </h3>
-  </div>
-  <div class="title_right">
-    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for...">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Go!</button>
-        </span>
-      </div>
-    </div>
-   </div>
-</div>
-<div class="row">
+<div class="row" style="height: calc( 100vh - 10px);">
   <div class="col-md-12">
     <div class="x_panel">
       <div class="x_title">
-          <h2>Employee Attendence</h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Settings 1</a>
-                  </li>
-                <li><a href="#">Settings 2</a>
-                  </li>
-              </ul>
-            </li>
-             <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-          </ul>
-          <div class="clearfix"></div>
+        <h2>Employee Attendence</h2>
+        <div class="clearfix"></div>
       </div>
       <div class="x_content">
         <br>
         <form class="form-horizontal form-label-left" (ngSubmit) = "getUserAttendence()">
-            <div class="row">
-                <div class="form-group col-md-6">
+          <div class="row">
+            <div class="form-group col-md-6">
               <label for="" class="control-label">Registered user:</label>
               <select name="user_id" id="" class="form-control" [(ngModel)]="user_id">
-                  <option *ngFor="let user of users" [value]="user.id">{{user.name}}<span *ngIf="user.name==''">{{user.id}}</span></option>
+                <option *ngFor="let user of users" [value]="user.id">{{user.name}}<span *ngIf="user.name==''">{{user.id}}</span></option>
               </select>
-              </div>
             </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="" class="control-label">From:</label>
-                    <input type="date" name="from" class="form-control" [(ngModel)]="from">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="" class="control-label">to</label>
-                    <input type="date" name="to" class="form-control" [(ngModel)]="to">
-                </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="" class="control-label">From:</label>
+              <input type="date" name="from" class="form-control" [(ngModel)]="from">
             </div>
+            <div class="form-group col-md-6">
+              <label for="" class="control-label">to</label>
+              <input type="date" name="to" class="form-control" [(ngModel)]="to">
+            </div>
+          </div>
 
 
           <div class="ln_solid"></div>
@@ -70,40 +38,40 @@
         </form>
       </div>
       <div class="x_content">
-          <table class="table table-striped responsive-utilities jambo_table bulk_action">
-                    <thead>
-                      <tr class="headings">
-                        <th>
-                          <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        </th>
-                        <th class="column-title">Date</th>
-                        <th class="column-title">Day</th>
-                        <th class="column-title">Check In Time</th>
-                        <th class="column-title">Check Out Time</th>
-                        <th class="column-title">Working Hours</th>
-                        <th class="column-title">Remark</th>
-                        <th class="column-title">Status</th>
-                        <th class="bulk-actions" colspan="7">
-                          <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                        </th>
-                      </tr>
-                    </thead>
+        <table class="table table-striped responsive-utilities jambo_table bulk_action">
+          <thead>
+          <tr class="headings">
+            <th>
+              <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+            </th>
+            <th class="column-title">Date</th>
+            <th class="column-title">Day</th>
+            <th class="column-title">Check In Time</th>
+            <th class="column-title">Check Out Time</th>
+            <th class="column-title">Working Hours</th>
+            <th class="column-title">Remark</th>
+            <th class="column-title">Status</th>
+            <th class="bulk-actions" colspan="7">
+              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+            </th>
+          </tr>
+          </thead>
 
-                    <tbody>
-                      <tr class="even pointer" *ngFor="let obj of attendence"   [style.background-color]="obj.day == 'Saturday' ? '#E6B0AA':''" >
-                        <td class="a-center ">
-                          <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="flat" name="table_records" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        </td>
-                        <td class=" ">{{obj.date}}</td>
-                        <td class=" ">{{obj.day}}</td>
-                        <td class=" ">{{obj.check_in}}<i class="success fa fa-long-arrow-up"></i></td>
-                        <td class=" ">{{obj.check_out}}</td>
-                        <td class=" ">{{obj.worked_time}}</td>
-                        <td class="">{{obj.remarks}}</td>
-                        <td class="">{{obj.status}}</td>
-                      </tr>
-                       </tbody>
-                  </table>
+          <tbody>
+          <tr class="even pointer" *ngFor="let obj of attendence"   [style.background-color]="obj.day == 'Saturday' ? '#E6B0AA':''" >
+            <td class="a-center ">
+              <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="flat" name="table_records" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+            </td>
+            <td class=" ">{{obj.date}}</td>
+            <td class=" ">{{obj.day}}</td>
+            <td class=" ">{{obj.check_in}}</td>
+            <td class=" ">{{obj.check_out}}</td>
+            <td class=" ">{{obj.worked_time}}</td>
+            <td class="">{{obj.remarks}}</td>
+            <td class="">{{obj.status}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

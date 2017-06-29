@@ -1,88 +1,80 @@
-
-<div class="btn-group" role="group" aria-label="...">
-        <button type="button" (click)="clicked('branch')" class="btn btn-default">Branch</button>
-        <button type="button" (click)="clicked('department')" class="btn btn-default">Department</button>
-        <button type="button" (click)="clicked('sub_department')" class="btn btn-default">Sub Department</button>
-        <button type="button" (click)="clicked('designation')" class="btn btn-default">Designation</button>
-        <button type="button" (click)="clicked('grade')" class="btn btn-default">Grade</button>
-        <button type="button" (click)="clicked('mode')" class="btn btn-default">Mode</button>
-        <button type="button" (click)="clicked('status')" class="btn btn-default">Status</button>
-        <button type="button" (click)="clicked('type')" class="btn btn-default">Type</button>
-    </div>
-<div class="page-title">
-  <div class="">
-
-    <h3>
-      {{entityTitle}}
-    </h3>
-
+<div style="height: calc( 100vh - 50px);">
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" (click)="clicked('branch')" class="btn btn-default">Branch</button>
+    <button type="button" (click)="clicked('department')" class="btn btn-default">Department</button>
+    <button type="button" (click)="clicked('sub_department')" class="btn btn-default">Sub Department</button>
+    <button type="button" (click)="clicked('designation')" class="btn btn-default">Designation</button>
+    <button type="button" (click)="clicked('grade')" class="btn btn-default">Grade</button>
+    <button type="button" (click)="clicked('mode')" class="btn btn-default">Mode</button>
+    <button type="button" (click)="clicked('status')" class="btn btn-default">Status</button>
+    <button type="button" (click)="clicked('type')" class="btn btn-default">Type</button>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="x_panel">
-      <div class="x_title">
+  <div class="page-title">
+    <div class="">
+
+      <h3>
+        {{entityTitle}}
+      </h3>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
           <h2>Add {{entityTitle}}</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Settings 1</a>
-                  </li>
+                </li>
                 <li><a href="#">Settings 2</a>
-                  </li>
+                </li>
               </ul>
             </li>
-             <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
           </ul>
           <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <br>
-        <form class="form-horizontal form-label-left" (ngSubmit) = "save()" [formGroup]= "myform">
-          <div class="form-group"><label for="" class="control-label">{{entityTitle}} Name</label>
-          <input type="text" formControlName="name" class="form-control" [(ngModel)]="entityModel.name">
-          </div>
-          <div class="ln_solid"></div>
-          <div class="form-group">
-            <div class="col-md-9 col-md-offset-3">
-              <button type="submit" class="btn btn-primary">Reset</button>
-              <button type="submit"  class="btn btn-success">Submit</button>
+        </div>
+        <div class="x_content">
+          <br>
+          <form class="form-horizontal form-label-left" (ngSubmit) = "save()" [formGroup]= "myform">
+            <div class="form-group"><label class="control-label">{{entityTitle}} Name</label>
+              <input type="text" formControlName="name" class="form-control" [(ngModel)]="entityModel.name">
             </div>
-          </div>
-        </form>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-9 col-md-offset-3">
+                <button type="submit" class="btn btn-primary">Reset</button>
+                <button type="submit"  class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <div class="x_panel">
-      <div class="x_title">
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
           <h2>{{entityTitle}} List</h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Settings 1</a>
-                  </li>
-                <li><a href="#">Settings 2</a>
-                  </li>
-              </ul>
-            </li>
-             <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-          </ul>
           <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <ul class="to_do">
-          <li *ngFor="let obj of entities" [id]="obj.id"><a href="#">{{obj.name}}</a><a href="#"><i class="fa fa-pencil"></i></a><a href="#"><i class="fa fa-pencil"></i></a></li>
-        </ul>
+        </div>
+        <div class="x_content">
+          <ul class="to_do">
+            <li *ngFor="let obj of entities" [id]="obj.id"><a href="#">{{obj.name}}</a>
+              <div style="float:right;">
+                <a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;
+                <a href="#"><i class="fa fa-pencil"></i></a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
