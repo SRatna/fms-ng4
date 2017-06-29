@@ -28,7 +28,7 @@ import {CommonService} from './services/common.service';
 import {AuthGuard} from './services/auth-guard.service';
 import {AuthService} from './services/auth.service';
 import {DataService} from './services/data.service';
-import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +59,6 @@ import { DataTablesModule } from 'angular-datatables';
     AccountModule,
     AppRoutingModule,
     EntitiesModule,
-    DataTablesModule
   ],
   providers: [
     CommonService, AuthGuard, AuthService, DataService

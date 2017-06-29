@@ -8,7 +8,8 @@ const appRoutes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    component: LayoutComponent,
+    redirectTo: '/fms',
+    pathMatch:'full'
   },
   { path: '**', component: PageNotFoundComponent },
 
