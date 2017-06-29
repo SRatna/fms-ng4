@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { CommonService } from '../services/common.service';
 import { DataService } from '../services/data.service';
 @Injectable()
@@ -33,6 +33,8 @@ export class AuthService {
         localStorage.removeItem('currentUser');
         this.router.navigate(['/login']);
     }
+
+
 
 
 }
