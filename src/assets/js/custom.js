@@ -8,6 +8,7 @@
 $(function () {
   $('#sidebar-menu li ul').slideUp();
   $('#sidebar-menu li').removeClass('active');
+
   $('.parent-menu').on('click', function() {
     if ($(this).parent().is('.active')) {
       $(this).parent().removeClass('active');
@@ -39,6 +40,7 @@ $(function () {
       }
     }
   });
+
 });
 
 // Sidebar Menu active class

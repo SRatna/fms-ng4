@@ -29,7 +29,6 @@ import {AuthGuard} from './services/auth-guard.service';
 import {AuthService} from './services/auth.service';
 import {DataService} from './services/data.service';
 
-
 @NgModule({
   declarations: [
     AppComponent, PageNotFoundComponent
