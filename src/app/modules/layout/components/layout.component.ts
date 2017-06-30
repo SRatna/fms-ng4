@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, AfterViewInit,ElementRef } from '@angular/core';
-declare let jQuery: any;
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+declare const jQuery: any;
 
 @Component({
-    templateUrl:'./layout.component.html'
+    templateUrl: './layout.component.html'
 })
 
 export class LayoutComponent implements AfterViewInit {
