@@ -1,4 +1,5 @@
 export class Branch {
-  id: number;
-  name: string ;
+  id?: number;
+  name: string;
+  departments?: any;
 }

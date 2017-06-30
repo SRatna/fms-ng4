@@ -13,9 +13,14 @@ export class AuthService {
         this.isLoggedIn = localStorage.getItem('currentUser') == null ? false : true;
     }
 
+    loginUser(data:any){
+       return this
+            .http
+            .post(this.server + 'login', data);
+    }
+
     login(data: any){
-        console.log(this.server + 'login');
-        this.dataService.saveData(this.server + 'login', data).subscribe((response: Response) => {
+        this.loginUser(data).subscribe((response: Response) => {
             console.log(response);
             let user = response.json();
             if (user && user.token) {

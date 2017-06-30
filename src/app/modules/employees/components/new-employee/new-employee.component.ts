@@ -2,7 +2,8 @@ import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {Employee} from '../../classes/employee';
 import {CommonService} from '../../../../services/common.service';
 import {DataService} from '../../../../services/data.service';
-import {Response} from '@angular/http';
+import { Response } from '@angular/http';
+
 import {FormGroup, FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 declare const jQuery: any;

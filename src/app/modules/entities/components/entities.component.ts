@@ -46,18 +46,27 @@ export class EntitiesComponent implements OnInit {
   entity = 'branch';
   editform= false;
   entityUrl: string;
-  entityModel: object;
+  entityModel: any;
 
   constructor(private commonService: CommonService, private dataService: DataService) {}
 
   save(): void {
+    console.log(this.editform);
+    this.editform ? this.dataService
+      .updateData(this.entityUrl, this.entityModel.id, this.entityModel)
+      .subscribe((response: Response) => {
+        this.getEntities();
+        this
+          .myform
+          .reset();
+      }) :
     this
       .dataService
       .saveData(this.entityUrl, this.entityModel)
-      .subscribe((response: Response) => {
+        .subscribe((response: Response) => {
+        console.log(response)
         this
-          .entities
-          .push(response.json());
+          .getEntities();
         this
           .myform
           .reset();
@@ -70,11 +79,7 @@ export class EntitiesComponent implements OnInit {
     this.getEntities();
   }
 
-  //   deleteDepartment(department: Department): void {     if (confirm('Do you
-  // really want to delete?')) {       this.commonService.remove(department,
-  // this.departmentsUrl)         .subscribe(deletedDepartment => this.departments
-  // = this.departments.filter(d => d !== deletedDepartment), err =>
-  // console.log(err));     }   }
+
   delete($event) {
     $event.preventDefault();
     this.dataService.deleteData(this.entityUrl, $event.target.id).subscribe((response: Response) => {
@@ -90,10 +95,11 @@ export class EntitiesComponent implements OnInit {
       this.getEntities();
     }, error => console.log(error));
   }
+
   editEntity($event) {
     $event.preventDefault();
-    console.log(this.entities);
-    this.entity = _.findWhere(this.entities,{id:$event.target.id})
+    this.entityModel = _.findWhere(this.entities, { id: parseInt($event.target.id) });
+    this.editform = true;
   }
   getEntities(): void {
     this

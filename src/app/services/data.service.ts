@@ -36,7 +36,7 @@ export class DataService {
     saveData(url: string, data: object) {
         return this
             .http
-            .post(url, data);
+            .post(url, data,this.jwt());
     }
     getDataByDateRange(url: string, data: any) {
         return this

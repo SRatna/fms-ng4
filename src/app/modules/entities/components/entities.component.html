@@ -27,11 +27,8 @@
         </div>
         <div class="x_content">
           <br>
-          <form class="form-horizontal form-label-left" (ngSubmit) = "!myform.controls.name.errors " [formGroup]= "myform">
-            <div class="form-group" [ngClass]="{
-              'has-danger':myform.controls.name.invalid,
-              'has-green':myform.controls.name.valid
-            }"><label class="control-label">{{entityTitle}} Name</label>
+          <form class="form-horizontal form-label-left" (ngSubmit) = "save()" [formGroup]= "myform">
+            <div class="form-group" ><label class="control-label">{{entityTitle}} Name</label>
               <input type="text" formControlName="name" class="form-control" [(ngModel)]="entityModel.name">
               <p *ngIf="myform.controls.name.errors && myform.controls.name.errors.required">Name is required</p>
               <p *ngIf="myform.controls.name.errors && myform.controls.name.errors.minlength">Minimum 3 character is required</p>
