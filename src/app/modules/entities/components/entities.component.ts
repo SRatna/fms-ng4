@@ -11,7 +11,7 @@ import {CommonService} from '../../../services/common.service';
 import {DataService} from '../../../services/data.service';
 
 import * as _ from 'underscore';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl,Validators} from '@angular/forms';
 import {isUndefined} from "util";
 import {Response} from '@angular/http';
 
@@ -46,7 +46,8 @@ export class EntitiesComponent implements OnInit {
   entities : any;
   entity = 'branch';
   entityUrl : string;
-  entityModel : object;
+  entityModel: object;
+  editform= false;
 
   constructor(private commonService : CommonService, private dataService : DataService) {}
 
@@ -75,7 +76,26 @@ export class EntitiesComponent implements OnInit {
   // this.departmentsUrl)         .subscribe(deletedDepartment => this.departments
   // = this.departments.filter(d => d !== deletedDepartment), err =>
   // console.log(err));     }   }
+  delete($event) {
+    $event.preventDefault();
+    this.dataService.deleteData(this.entityUrl, $event.target.id).subscribe((response: Response) => {
+      this.getEntities();
+    }, error => {
+      console.log(error);
+    });
+  }
 
+  edit($event) {
+    $event.preventDefault();
+    this.dataService.updateData(this.entityUrl, $event.target.id,this.entity).subscribe((response: Response) => {
+      this.getEntities();
+    }, error => console.log(error));
+  }
+  editEntity($event) {
+    $event.preventDefault();
+    console.log(this.entities);
+    this.entity = _.findWhere(this.entities,{id:$event.target.id})
+  }
   getEntities() : void {
     this
       .dataService
@@ -96,7 +116,7 @@ export class EntitiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.myform = new FormGroup({name: new FormControl('')});
+    this.myform = new FormGroup({name: new FormControl('',[Validators.required,Validators.minLength(3)])});
     this.initiateModel();
     this.getEntities();
 

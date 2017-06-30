@@ -27,15 +27,20 @@
         </div>
         <div class="x_content">
           <br>
-          <form class="form-horizontal form-label-left" (ngSubmit) = "save()" [formGroup]= "myform">
-            <div class="form-group"><label class="control-label">{{entityTitle}} Name</label>
+          <form class="form-horizontal form-label-left" (ngSubmit) = "!myform.controls.name.errors " [formGroup]= "myform">
+            <div class="form-group" [ngClass]="{
+              'has-danger':myform.controls.name.invalid,
+              'has-green':myform.controls.name.valid
+            }"><label class="control-label">{{entityTitle}} Name</label>
               <input type="text" formControlName="name" class="form-control" [(ngModel)]="entityModel.name">
+              <p *ngIf="myform.controls.name.errors && myform.controls.name.errors.required">Name is required</p>
+              <p *ngIf="myform.controls.name.errors && myform.controls.name.errors.minlength">Minimum 3 character is required</p>
             </div>
             <div class="ln_solid"></div>
             <div class="form-group">
               <div class="col-md-9 col-md-offset-3">
-                <button type="submit" class="btn btn-primary">Reset</button>
-                <button type="submit"  class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="myform.reset">Reset</button>
+                <button type="submit"  class="btn btn-success" [disabled]="!myform.valid">Submit</button>
               </div>
             </div>
           </form>
@@ -52,8 +57,8 @@
           <ul class="to_do">
             <li *ngFor="let obj of entities" [id]="obj.id"><a href="#">{{obj.name}}</a>
               <div style="float:right;">
-                <a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
-                <a href="#"><i class="fa fa-pencil"></i></a>&nbsp;
+                <a href="" (click)="delete($event);" [id]="obj.id"><i class="fa fa-trash-o" [id]="obj.id"></i></a>&nbsp;&nbsp;
+                <a href="" (click)="editEntity($event);"  [id]="obj.id"><i class="fa fa-pencil" [id]="obj.id"></i></a>&nbsp;
               </div>
             </li>
           </ul>

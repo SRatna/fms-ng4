@@ -15,7 +15,9 @@ export class DataService {
         // create authorization header with jwt token
         let currentUser = localStorage.getItem('currentUser');
         if (currentUser) {
-            let headers = new Headers({ 'auth-token': currentUser });
+            let headers = new Headers({
+                'auth-token': currentUser
+            });
             return new RequestOptions({ headers: headers });
         }
     }
@@ -46,5 +48,14 @@ export class DataService {
         return this
             .http
             .get(fullUrl,this.jwt());
+    }
+    deleteData(url: string, id: any) {
+        let fullUrl = url + '/' + id;
+        return this.http
+            .delete(fullUrl, this.jwt());
+    }
+    updateData(url: string, id: any,data:any) {
+        let fullUrl = url + '/' + id;
+        return this.http.patch(fullUrl, data, this.jwt());
     }
 }
