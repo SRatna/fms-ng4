@@ -25,6 +25,7 @@
     "@reactivex/rxjs": "^5.4.0",
     "@types/moment": "^2.13.0",
     "angular-datatables": "^4.1.1",
+    "angular2-flash-messages": "^1.0.8",
     "angular2-moment": "^1.4.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",

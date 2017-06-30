@@ -2,7 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {EmployeesModule} from './modules/employees/employees.module';
+import { EmployeesModule } from './modules/employees/employees.module';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import {DashboardModule} from './modules/dashboard/dashboard.module';
 import {AccountModule} from './modules/account/account.module';
 import {AppComponent} from './app.component';
@@ -36,6 +37,7 @@ import {DataService} from './services/data.service';
     AccountModule,
     AppRoutingModule,
     EntitiesModule,
+    FlashMessagesModule
   ],
   providers: [
     CommonService, AuthGuard, AuthService, DataService

@@ -5,6 +5,7 @@ import {DataService} from '../../../../services/data.service';
 import { Response } from '@angular/http';
 import {FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import * as _ from 'underscore';
 declare const jQuery: any;
 
@@ -38,7 +39,12 @@ AfterViewInit {
   edit = false;
 
 
-  constructor(private commonService: CommonService, private dataService: DataService, route: ActivatedRoute, private router:Router) {
+  constructor(private commonService: CommonService,
+    private dataService: DataService,
+    route: ActivatedRoute,
+    private router: Router,
+    private alertFlash: FlashMessagesService
+  ) {
     this.employeeId = route.snapshot.params['id'];
     this.edit = this.employeeId ? true : false;
     let employee = this.edit ? this.dataService.getDataById(commonService.getServer() + 'employee', this.employeeId).subscribe((response: Response) => {
@@ -51,7 +57,6 @@ AfterViewInit {
       .dataService
       .updateData(this.employeesUrl, this.employeeId, this.employee)
       .subscribe((response: Response) => {
-        console.log(response.json());
         this.myform.reset();
         this.router.navigate(['/fms/employees']);
         this.edit = false;
@@ -59,10 +64,12 @@ AfterViewInit {
     this
       .dataService
       .saveData(this.employeesUrl, this.employee)
-      .subscribe(obj => {
+        .subscribe(obj => {
+        this.alertFlash.show("Employee Added !!", { cssClass: 'alert-success', timeout: 3000 });
         this
           .myform
           .reset();
+        this.getUnregisteredUser();
       }, error => console.log(error));
   }
 
@@ -71,7 +78,6 @@ AfterViewInit {
       .dataService
       .getDatas(this.registeredUsersUrl)
       .subscribe((objects: Response) => {
-        console.log(objects.json().objects);
         this.unregisteredUser = objects
           .json()
           .objects;

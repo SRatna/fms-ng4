@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { CommonService } from '../../../../services/common.service';
 import { DataService } from '../../../../services/data.service';
 import { Response } from '@angular/http';
+import { FlashMessagesService } from 'angular2-flash-messages';
 declare const $: any;
 @Component({
   selector: 'app-employees',
@@ -18,7 +19,9 @@ export class EmployeesComponent implements OnInit {
   pagesList: number[] = [];
   queryTerm: string;
   resultsPerPage = 10;
-  constructor(private commonService: CommonService, private dataService: DataService) { }
+  constructor(private commonService: CommonService,
+    private dataService: DataService,
+   private _flashMessagesService: FlashMessagesService) { }
 
   getEmployees() {
     this.dataService
@@ -64,7 +67,9 @@ export class EmployeesComponent implements OnInit {
 
   deleteEmployee(id) {
     this.dataService.deleteData(this.url, id).subscribe((response: Response) => {
+    this._flashMessagesService.show("EMPLOYEE DELETED !!", { cssClass: 'alert-warning', timeout: 3000 });
       this.getEmployees();
+
     }, error => {
       console.log(error);
     });

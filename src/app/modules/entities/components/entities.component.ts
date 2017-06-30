@@ -12,7 +12,9 @@ import {DataService} from '../../../services/data.service';
 import * as _ from 'underscore';
 import {FormGroup, FormControl,Validators} from '@angular/forms';
 import {isUndefined} from "util";
-import {Response} from '@angular/http';
+import { Response } from '@angular/http';
+import { FlashMessagesService } from 'angular2-flash-messages';
+
 
 @Component({templateUrl: './entities.component.html', styleUrls: ['./entities.component.css']})
 export class EntitiesComponent implements OnInit {
@@ -48,13 +50,15 @@ export class EntitiesComponent implements OnInit {
   entityUrl: string;
   entityModel: any;
 
-  constructor(private commonService: CommonService, private dataService: DataService) {}
+  constructor(
+    private commonService: CommonService,
+    private dataService: DataService,
+    private _flashMessagesService: FlashMessagesService) { }
 
   save(): void {
     this.editform ? this.dataService
       .updateData(this.entityUrl, this.entityModel.id, this.entityModel)
       .subscribe((response: Response) => {
-        
         this.getEntities();
         this
           .myform
@@ -84,7 +88,9 @@ export class EntitiesComponent implements OnInit {
   delete($event) {
     $event.preventDefault();
     this.dataService.deleteData(this.entityUrl, $event.target.id).subscribe((response: Response) => {
+       this._flashMessagesService.show(this.entity.toUpperCase() +" DELETED !!", { cssClass: 'alert-warning', timeout: 3000 });
       this.getEntities();
+
     }, error => {
       console.log(error);
     });

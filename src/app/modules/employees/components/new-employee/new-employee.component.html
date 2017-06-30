@@ -16,6 +16,7 @@
             <div class="form-group col-md-4" *ngIf="!edit">
               <label class="control-label">Unregistered User</label>
               <select formControlName="user_id"  [(ngModel)]="employee.user_id"  class="form-control">
+
                 <option *ngFor="let obj of unregisteredUser" [value]="obj.id">{{obj.name}}<span *ngIf="obj.name == ''">{{obj.id}}</span></option>
               </select>
             </div>
