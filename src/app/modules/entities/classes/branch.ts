@@ -1,5 +1,5 @@
 export class Branch {
   id?: number;
   name: string;
-  departments?: any;
+ // departments?: any;
 }

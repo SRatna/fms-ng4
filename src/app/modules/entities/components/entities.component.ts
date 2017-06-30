@@ -51,14 +51,15 @@ export class EntitiesComponent implements OnInit {
   constructor(private commonService: CommonService, private dataService: DataService) {}
 
   save(): void {
-    console.log(this.editform);
     this.editform ? this.dataService
       .updateData(this.entityUrl, this.entityModel.id, this.entityModel)
       .subscribe((response: Response) => {
+        
         this.getEntities();
         this
           .myform
           .reset();
+        this.editform = false;
       }) :
     this
       .dataService

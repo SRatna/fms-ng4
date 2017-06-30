@@ -3,9 +3,9 @@ import {Employee} from '../../classes/employee';
 import {CommonService} from '../../../../services/common.service';
 import {DataService} from '../../../../services/data.service';
 import { Response } from '@angular/http';
-
 import {FormGroup, FormControl} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as _ from 'underscore';
 declare const jQuery: any;
 
 @Component({selector: 'app-new-employee', templateUrl: './new-employee.component.html', styleUrls: ['./new-employee.component.css']})
@@ -36,15 +36,26 @@ AfterViewInit {
   unregisteredUser: any;
   employeeId: any;
   edit = false;
-  constructor(private commonService: CommonService, private dataService: DataService, route: ActivatedRoute) {
+
+
+  constructor(private commonService: CommonService, private dataService: DataService, route: ActivatedRoute, private router:Router) {
     this.employeeId = route.snapshot.params['id'];
     this.edit = this.employeeId ? true : false;
-    let employee = this.employeeId ? this.dataService.getDataById(commonService.getServer() + 'employee', this.employeeId).subscribe((response: Response) => {
-      this.employee = response.json();
+    let employee = this.edit ? this.dataService.getDataById(commonService.getServer() + 'employee', this.employeeId).subscribe((response: Response) => {
+      this.employee = _.omit(response.json(), 'branch', 'designation', 'department', 'sub-department', 'grade', 'type', 'mode', 'status', 'user');
     },error=>console.log(error)) : '';
   }
 
   registerEmployee(): void {
+    this.edit ? this
+      .dataService
+      .updateData(this.employeesUrl, this.employeeId, this.employee)
+      .subscribe((response: Response) => {
+        console.log(response.json());
+        this.myform.reset();
+        this.router.navigate(['/fms/employees']);
+        this.edit = false;
+    }):
     this
       .dataService
       .saveData(this.employeesUrl, this.employee)
@@ -187,15 +198,6 @@ AfterViewInit {
     this.getModes();
     this.getUnregisteredUser();
 
-  }
-
-  getUserDetail() {
-    this
-      .dataService
-      .getDataById(this.employeesUrl, this.employee.user_id)
-      .subscribe((response: Response) => {
-        console.log(response.json());
-      });
   }
 
   ngAfterViewInit() {}
