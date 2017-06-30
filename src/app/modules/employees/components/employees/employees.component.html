@@ -65,8 +65,8 @@
               <td>{{ employee.mobile_number }}</td>
               <td>
                 <div style="float:right;">
-                  <a href="javascript:"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
-                  <a href="javascript:"><i class="fa fa-pencil"></i></a>&nbsp;
+                  <a (click)="deleteEmployee(employee.id)" href="javascript:"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+                  <a [routerLink]="'/fms/register-employee/'+employee.id"><i class="fa fa-pencil"></i></a>&nbsp;
                 </div>
               </td>
             </tr>

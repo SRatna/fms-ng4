@@ -33,7 +33,7 @@ export class EmployeesComponent implements OnInit {
         for (let i = 1; i <= this.totalPages; i++) {
           this.pagesList.push(i);
         }
-    });
+      });
   }
 
   loadNewPage(pageNo) {
@@ -59,6 +59,14 @@ export class EmployeesComponent implements OnInit {
         for (let i = 1; i <= this.totalPages; i++) {
           this.pagesList.push(i);
         }
+      });
+  }
+
+  deleteEmployee(id) {
+    this.dataService.deleteData(this.url, id).subscribe((response: Response) => {
+      this.getEmployees();
+    }, error => {
+      console.log(error);
     });
   }
 
