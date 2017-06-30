@@ -45,6 +45,7 @@
               <th>Mode</th>
               <th>Type</th>
               <th>Contact No</th>
+              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -62,6 +63,12 @@
               <td>{{ employee.mode.name }}</td>
               <td>{{ employee.type.name }}</td>
               <td>{{ employee.mobile_number }}</td>
+              <td>
+                <div style="float:right;">
+                  <a href="javascript:"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+                  <a href="javascript:"><i class="fa fa-pencil"></i></a>&nbsp;
+                </div>
+              </td>
             </tr>
             </tbody>
           </table>

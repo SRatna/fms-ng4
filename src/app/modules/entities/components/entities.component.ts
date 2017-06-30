@@ -1,25 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {Branch} from '../../branches/classes/branch';
-import {Department} from '../../departments/classes/department';
-import {SubDepartment} from '../../sub-departments/classes/sub-department';
-import {Status} from '../../statuses/classes/status';
-import {Designation} from '../../designations/classes/designation';
-import {Mode} from '../../modes/classes/mode';
-import {Grade} from '../../grades/classes/grade';
-import {Type} from '../../types/classes/type';
+import {Branch} from '../classes/branch';
+import {Department} from '../classes/department';
+import {SubDepartment} from '../classes/sub-department';
+import {Status} from '../classes/status';
+import {Designation} from '../classes/designation';
+import {Mode} from '../classes/mode';
+import {Grade} from '../classes/grade';
+import {Type} from '../classes/type';
 import {CommonService} from '../../../services/common.service';
 import {DataService} from '../../../services/data.service';
 
-import * as _ from 'underscore';
 import {FormGroup, FormControl} from '@angular/forms';
-import {isUndefined} from "util";
 import {Response} from '@angular/http';
 
 @Component({templateUrl: './entities.component.html', styleUrls: ['./entities.component.css']})
 export class EntitiesComponent implements OnInit {
 
-  myform : FormGroup;
-  duplicityErrorMsg : string;
+  myform: FormGroup;
+  duplicityErrorMsg: string;
   newEntities = {
     department: new Department(),
     branch: new Branch(),
@@ -40,28 +38,28 @@ export class EntitiesComponent implements OnInit {
     status: 'Status',
     sub_department: 'Sub Department',
     type: 'Type'
-  }
+  };
 
-  entityTitle : string;
-  entities : any;
+  entityTitle: string;
+  entities: any;
   entity = 'branch';
-  entityUrl : string;
-  entityModel : object;
+  entityUrl: string;
+  entityModel: object;
 
-  constructor(private commonService : CommonService, private dataService : DataService) {}
+  constructor(private commonService: CommonService, private dataService: DataService) {}
 
-  save() : void {
+  save(): void {
     this
       .dataService
       .saveData(this.entityUrl, this.entityModel)
-      .subscribe((response : Response) => {
+      .subscribe((response: Response) => {
         this
           .entities
           .push(response.json());
         this
           .myform
           .reset();
-      })
+      });
   }
 
   clicked(ent) {
@@ -76,11 +74,11 @@ export class EntitiesComponent implements OnInit {
   // = this.departments.filter(d => d !== deletedDepartment), err =>
   // console.log(err));     }   }
 
-  getEntities() : void {
+  getEntities(): void {
     this
       .dataService
       .getDatas(this.entityUrl)
-      .subscribe((response : Response) => {
+      .subscribe((response: Response) => {
         this.entities = response
           .json()
           .objects;
