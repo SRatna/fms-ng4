@@ -35,9 +35,13 @@ AfterViewInit {
   employeesUrl: string;
   unregisteredUser: any;
   employeeId: any;
+  edit = false;
   constructor(private commonService: CommonService, private dataService: DataService, route: ActivatedRoute) {
     this.employeeId = route.snapshot.params['id'];
-    console.log(this.employeeId);
+    this.edit = this.employeeId ? true : false;
+    let employee = this.employeeId ? this.dataService.getDataById(commonService.getServer() + 'employee', this.employeeId).subscribe((response: Response) => {
+      this.employee = response.json();
+    },error=>console.log(error)) : '';
   }
 
   registerEmployee(): void {

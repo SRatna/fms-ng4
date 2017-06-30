@@ -43,7 +43,7 @@ export class DataService {
             .http
             .post(url, data,this.jwt());
     }
-    getDataById(url: string, id: any) {
+    getDataById(url: string, id: number) {
         let fullUrl = url + '/' + id;
         return this
             .http
