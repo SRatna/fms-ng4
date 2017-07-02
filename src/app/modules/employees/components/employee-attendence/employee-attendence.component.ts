@@ -24,7 +24,7 @@ export class EmployeeAttendenceComponent implements OnInit {
     }
 
     getRegisteredUser() {
-        const url = this.commonService.getServer() + 'user';
+        const url = this.commonService.getServer() + 'alluser';
         this.dataService.getDatas(url).subscribe((response: Response) => {
             this.users = response.json().objects;
 

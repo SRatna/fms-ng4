@@ -40,7 +40,7 @@ export class CommonService {
   }
 
   getServer(): string{
-    return 'http://local.dev:9090/api/';
+    return 'http://192.168.1.236:9090/api/';
   }
 }
 
