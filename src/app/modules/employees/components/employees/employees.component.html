@@ -50,18 +50,18 @@
             </thead>
             <tbody>
             <tr *ngFor="let employee of employees">
-              <td>{{ employee.id }}</td>
+              <td>{{ employee.user_id }}</td>
               <td>{{ employee.username }}</td>
               <td>{{ employee.first_name }}</td>
               <td>{{ employee.middle_name }}</td>
               <td>{{ employee.last_name }}</td>
-              <td>{{ employee.branch.name }}</td>
-              <td>{{ employee.department.name }}</td>
-              <td>{{ employee.sub_department.name }}</td>
-              <td>{{ employee.grade.name }}</td>
-              <td>{{ employee.status.name }}</td>
-              <td>{{ employee.mode.name }}</td>
-              <td>{{ employee.type.name }}</td>
+              <td>{{ employee.branch ? employee.branch.name:'' }}</td>
+              <td>{{ employee.department!=null ? employee.department.name:'' }}</td>
+              <td>{{ employee.sub_department ?employee.sub_department.name:'' }}</td>
+              <td>{{ employee.grade ? employee.grade.name:'' }}</td>
+              <td>{{ employee.status ?employee.status.name :''}}</td>
+              <td>{{ employee.mode ? employee.mode.name:'' }}</td>
+              <td>{{ employee.type ? employee.type.name:'' }}</td>
               <td>{{ employee.mobile_number }}</td>
               <td>
                 <div style="float:right;">

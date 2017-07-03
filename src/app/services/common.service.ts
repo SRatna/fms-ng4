@@ -7,7 +7,100 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class CommonService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+  public district = [
+    "achham",
+    "arghakhanchi",
+    "baglung",
+    "baitadi",
+    "bajhang",
+    "bajura",
+    "banke",
+    "bara",
+    "bardiya",
+    "bhaktapur",
+    "bhojpur",
+    "chitwan",
+    "dadeldhura",
+    "dailekh",
+    "dang deukhuri",
+    "darchula",
+    "dhading",
+    "dhankuta",
+    "dhanusa",
+    "dholkha",
+    "dolpa",
+    "doti",
+    "gorkha",
+    "gulmi",
+    "humla",
+    "ilam",
+    "jajarkot",
+    "jhapa",
+    "jumla",
+    "kailali",
+    "kalikot",
+    "kanchanpur",
+    "kapilvastu",
+    "kaski",
+    "kathmandu",
+    "kavrepalanchok",
+    "khotang",
+    "lalitpur",
+    "lamjung",
+    "mahottari",
+    "makwanpur",
+    "manang",
+    "morang",
+    "mugu",
+    "mustang",
+    "myagdi",
+    "nawalparasi",
+    "nuwakot",
+    "okhaldhunga",
+    "palpa",
+    "panchthar",
+    "parbat",
+    "parsa",
+    "pyuthan",
+    "ramechhap",
+    "rasuwa",
+    "rautahat",
+    "rolpa",
+    "rukum",
+    "rupandehi",
+    "salyan",
+    "sankhuwasabha",
+    "saptari",
+    "sarlahi",
+    "sindhuli",
+    "sindhupalchok",
+    "siraha",
+    "solukhumbu",
+    "sunsari",
+    "surkhet",
+    "syangja",
+    "tanahu",
+    "taplejung",
+    "terhathum",
+    "udayapur"
+  ];
+  public zone = [
+    "bagmati",
+    "bheri",
+    "dhawalagiri",
+    "gandaki",
+    "janakpur",
+    "karnali",
+    "koshi",
+    "lumbini",
+    "mahakali",
+    "mechi",
+    "narayani",
+    "rapti",
+    "sagarmatha",
+    "seti"
+  ];
 
   constructor(private http: Http) { }
 
@@ -37,6 +130,14 @@ export class CommonService {
       .post(`${url}/${obj.name}`, JSON.stringify(obj), {headers: this.headers})
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getDistrict(){
+    return this.http.get('./district.json');
+  }
+
+  getZone() {
+    return this.http.get('./zone.json');
   }
 
   getServer(): string{

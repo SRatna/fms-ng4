@@ -65,7 +65,7 @@
             <div class="form-group col-md-3">
               <label class="control-label">Status</label>
 
-              <select formControlName="mode_id"  class="form-control" [(ngModel)]="employee.status_id">
+              <select formControlName="status_id"  class="form-control" [(ngModel)]="employee.status_id">
                 <option *ngFor="let item of statuses" [value]="item.id">{{item.name}}</option>
               </select>
 
@@ -162,8 +162,12 @@
             </div>
             <div class="form-group col-md-4">
               <label class="control-label">Temporary Zone</label>
-              <input type="text"  placeholder="Temporary Zone" class="form-control" [(ngModel)]="employee.t_zone" formControlName="t_zone">
-            </div>
+
+              <select name="" id="" class="form-control" [(ngModel)]="employee.t_zone" formControlName="t_zone">
+                <option value="">choose zone</option>
+                <option *ngFor="let obj of zones" [value]="obj">{{obj}}</option>
+              </select>
+              </div>
             <div class="form-group col-md-4">
               <label class="control-label">Temporary Address</label>
               <input type="text"  placeholder="Temporary Address" class="form-control" [(ngModel)]="employee.t_address" formControlName="t_address">
@@ -172,8 +176,10 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label class="control-label">Temporary District</label>
-              <input type="text"  placeholder="Temporary District" class="form-control" [(ngModel)]="employee.t_district" formControlName="t_district">
-            </div>
+              <select name="" id="" class="form-control"  [(ngModel)]="employee.t_district" formControlName="t_district">
+                <option value="">choose district</option>
+                <option *ngFor="let obj of districts" [value]="obj">{{obj}}</option>
+              </select>  </div>
             <div class="form-group col-md-4">
               <label class="control-label">Temporary Street</label>
               <input type="text"  placeholder="Temporary Street" class="form-control" [(ngModel)]="employee.t_street" formControlName="t_street">
@@ -189,8 +195,11 @@
             </div>
             <div class="form-group col-md-4">
               <label class="control-label">Permanent Zone</label>
-              <input type="text"  placeholder="Permanent Zone" class="form-control" [(ngModel)]="employee.p_zone" formControlName="p_zone">
-            </div>
+              <select name="" id="" class="form-control"  [(ngModel)]="employee.p_zone" formControlName="p_zone">
+                <option value="">choose zone</option>
+                <option *ngFor="let obj of zones" [value]="obj">{{obj}}</option>
+              </select>
+             </div>
             <div class="form-group col-md-4">
               <label class="control-label">Permanent Address</label>
               <input type="text"  placeholder="Permanent Address" class="form-control" [(ngModel)]="employee.p_address" formControlName="p_address">
@@ -199,7 +208,10 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label class="control-label">Permanent District</label>
-              <input type="text"  placeholder="Permanent District" class="form-control" [(ngModel)]="employee.p_district" formControlName="p_district">
+              <select name="" id="" class="form-control"  [(ngModel)]="employee.p_district" formControlName="p_district">
+                <option value="">choose district</option>
+                <option *ngFor="let obj of districts" [value]="obj">{{obj}}</option>
+              </select>
             </div>
             <div class="form-group col-md-4">
               <label class="control-label">Permanent Street</label>

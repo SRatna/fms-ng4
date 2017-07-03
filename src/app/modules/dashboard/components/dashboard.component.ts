@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
     }
 
     getAttendenceDetail() {
-        console.log(this.date);
         const url = this.commonService.getServer() + 'dashboard';
         this.dataService.getData(url, { 'date': this.date })
             .subscribe((response: Response) => {

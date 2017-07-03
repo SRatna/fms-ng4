@@ -35,6 +35,50 @@
         </form>
       </div>
       <div class="x_content" [style.display]="attendence.length > 0 ? 'block' : 'none'">
+        <div class="col-md-3 col-xs-12 widget widget_tally_box">
+                      <div class="x_panel">
+                        <div class="x_title">
+                          <h2>Attendence Detail</h2>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                          <div>
+                            <ul class="list-inline widget_tally">
+                              <li>
+                                <p>
+                                  <span class="month">Total working Day</span>
+                                  <span class="count">{{workingDay}}</span>
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <span class="month">Present</span>
+                                  <span class="count">{{workedDay}}</span>
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <span class="month">Absent</span>
+                                  <span class="count">{{absent}}</span>
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <span class="month">Total Holiday</span>
+                                  <span class="count">{{holiday}}</span>
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <span class="month">Worked on Holiday</span>
+                                  <span class="count">{{holidaywork}}</span>
+                                </p>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
         <table class="table table-striped table-hover jambo_table">
           <thead>
             <tr class="headings">

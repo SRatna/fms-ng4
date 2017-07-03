@@ -7,6 +7,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import * as _ from 'underscore';
+//import * as districts from '../../../../services/district.json';
 declare const jQuery: any;
 
 @Component({selector: 'app-new-employee', templateUrl: './new-employee.component.html', styleUrls: ['./new-employee.component.css']})
@@ -37,6 +38,8 @@ AfterViewInit {
   unregisteredUser: any;
   employeeId: any;
   edit = false;
+  districts: any;
+  zones:any;
 
 
   constructor(private commonService: CommonService,
@@ -83,6 +86,9 @@ AfterViewInit {
           .objects;
       });
   }
+
+
+
 
   getBranches(): void {
     this
@@ -203,6 +209,10 @@ AfterViewInit {
     this.getTypes();
     this.getModes();
     this.getUnregisteredUser();
+    this.districts = this.commonService.district;
+    this.zones = this.commonService.zone;
+    console.log(this.zones);
+
 
   }
 
